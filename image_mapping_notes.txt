@@ -1,0 +1,16 @@
+Image mapping findings for restructure request on 2026-06-19:
+
+- corey_speaking1.jpg corresponds to the unwanted "Msocial" photo and should be removed from Corey Knight's mentor gallery.
+- staff_img1.jpeg = photo 1 from the user's numbered list; shows students in classroom with program director Gabi Smith present.
+- staff_img2.jpeg = photo 2 from the user's numbered list; shows students participating in classroom activity.
+- karl_stuart1.jpg = photo 7 from the user's numbered list; should move to separate student participation section.
+- karl_stuart3.jpg = photo 9 from the user's numbered list; should move to separate student participation section.
+- Need to confirm karl_stuart4.jpg as photo 10, but user instruction indicates photos 1,2,7,9,10 belong in the student participation section.
+- For Karl Stuart mentor gallery, retain only the images aligned with original photos 8, 11, 12 (mapped to karl_stuart2.jpg, karl_stuart5.jpg, karl_stuart6.jpg).
+- For Corey Knight mentor gallery, retain corey_knight_speaker.jpg plus food_truck1.jpg, food_truck2.jpg, food_truck3.jpg; remove corey_speaking1.jpg (Msocial).
+- Participants tab should include both videos: careershop_video.mp4 (educators talking) and podcast_video.mp4 (students talking), plus student images.
+- Staff tab names requested by user: Alecia Tatum, Trezall Ragas, Malik Worthy, Hope Cousins, Gabi Smith.
+- Educators tab names requested by user: Mr. Jacobs, Mr. Robinson, Ms. Beard, Ms. Lawrence, Ms. Barber; descriptions pending from user.
+- Mentors tab should include Karl Stuart bio placeholder and Corey Knight bio placeholder until user submits bios.
+
+Source files reviewed visually: /home/ubuntu/learnearndunbar/images/corey_speaking1.jpg, staff_img1.jpeg, staff_img2.jpeg, karl_stuart1.jpg, karl_stuart3.jpg.
