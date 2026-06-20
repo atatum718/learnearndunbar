@@ -749,6 +749,24 @@
       padding: 0.5rem 1.25rem 1.25rem;
     }
     .spk-accordion.open .spk-acc-arrow { transform: rotate(180deg); }
+    /* Educator Videos */
+    .edu-videos-wrap {
+      margin-top: 3rem;
+      border-top: 1px solid var(--border);
+      padding-top: 2rem;
+    }
+    .edu-videos-title {
+      font-size: 1.1rem; font-weight: 800; color: var(--white);
+      margin-bottom: 1.5rem; text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .edu-videos-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    @media (max-width: 768px) {
+      .edu-videos-grid { grid-template-columns: 1fr; }
+    }
     /* Staff / Educator cards */
     .people-cards-grid {
       display: grid; grid-template-columns: 1fr 1fr;
@@ -1335,18 +1353,6 @@
     </p>
     <div class="hero-meta">
       <div class="hero-meta-item">
-        <div class="num"><span class="count-up" data-target="191">0</span>+</div>
-        <div class="label">Students Served</div>
-      </div>
-      <div class="hero-meta-item">
-        <div class="num"><span class="count-up" data-target="4">0</span></div>
-        <div class="label">Career Tracks</div>
-      </div>
-      <div class="hero-meta-item">
-        <div class="num"><span class="count-up" data-target="6">0</span></div>
-        <div class="label">Weeks of Learning</div>
-      </div>
-      <div class="hero-meta-item">
         <div class="num">42.5%</div>
         <div class="label">Decrease in<br/>Chronically Absent</div>
       </div>
@@ -1717,6 +1723,33 @@
           </div>
         </div>
 
+      </div>
+
+      <!-- Educator Videos -->
+      <div class="edu-videos-wrap">
+        <h3 class="edu-videos-title">&#127916; Hear from the Educators</h3>
+        <div class="edu-videos-grid">
+          <div class="participant-video-card">
+            <div class="pv-badge" style="background:var(--red);">&#127979; Educator Perspective</div>
+            <div class="pv-video-wrap" style="aspect-ratio:9/16; max-height:480px;">
+              <video src="images/educator_video1.mov" preload="metadata" playsinline controls style="width:100%;height:100%;object-fit:contain;background:#000;"></video>
+            </div>
+            <div class="pv-info">
+              <h4>Educator Reflection</h4>
+              <p>A Dunbar educator shares their perspective on the Learn &amp; Earn experience and the impact on students.</p>
+            </div>
+          </div>
+          <div class="participant-video-card">
+            <div class="pv-badge" style="background:var(--red-dark);">&#127979; Educator Perspective</div>
+            <div class="pv-video-wrap" style="aspect-ratio:200/352; max-height:480px;">
+              <video src="images/educator_video2.mov" preload="metadata" playsinline controls style="width:100%;height:100%;object-fit:contain;background:#000;"></video>
+            </div>
+            <div class="pv-info">
+              <h4>Educator Reflection</h4>
+              <p>Another voice from the classroom — an educator reflects on student growth and what made this program stand out.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
