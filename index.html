@@ -2038,19 +2038,19 @@
               <div class="step-flow">
                 <div class="step-card" onclick="openLightbox('images/sketch_park.jpeg', 'Step 1 — Student hand-drawn park space design sketch (DAM Space Design). Students identified community needs in Wards 5, 7 &amp; 8 and designed solutions on paper.')">
                   <span class="step-tool-badge">Hand Drawn</span>
-                  <img src="images/sketch_park.jpeg" alt="Student hand-drawn park design sketch" style="height:220px;" loading="lazy" />
+                  <img src="images/sketch_park.jpeg" alt="Student hand-drawn park design sketch" style="height:280px;" loading="lazy" />
                   <div class="step-card-label"><span class="step-num">1</span> Hand-Drawn Sketch</div>
                 </div>
                 <div class="step-arrow">&#8594;</div>
                 <div class="step-card" onclick="openLightbox('images/park_3d_render.png', 'Step 2 — AI-generated 3D render of the student park design using ChatGPT. The sketch was transformed into a detailed aerial 3D visualization featuring a basketball court, playground, greenhouse, and fountain.')">
                   <span class="step-tool-badge">ChatGPT</span>
-                  <img src="images/park_3d_render.png" alt="3D render of park design" style="height:220px;" loading="lazy" />
+                  <img src="images/park_3d_render.png" alt="3D render of park design" style="height:280px;" loading="lazy" />
                   <div class="step-card-label"><span class="step-num">2</span> 3D Render — ChatGPT</div>
                 </div>
                 <div class="step-arrow">&#8594;</div>
                 <div class="step-card" id="video-card">
                   <span class="step-tool-badge">Seed Dance</span>
-                  <video id="park-video" src="images/park_animation.mp4" style="height:220px;" muted loop playsinline preload="metadata"></video>
+                  <video id="park-video" src="images/park_animation.mp4" poster="images/park_animation_thumb.jpg" style="height:280px;" muted loop playsinline preload="metadata"></video>
                   <div class="video-play-hint" id="video-hint">
                     <div class="play-icon" onclick="toggleVideo()">&#9654;</div>
                   </div>
@@ -2086,45 +2086,7 @@
 </section>
 
 <!-- HIGHLIGHTS -->
-<section id="highlights">
-  <div class="section-inner">
-    <div class="section-tag reveal">Program Highlights</div>
-    <h2 class="section-title reveal">Key <span>Moments</span> &amp; Achievements</h2>
-    <div class="divider reveal"></div>
-    <div class="highlights-grid">
-      <div class="highlight-card reveal">
-        <div class="highlight-icon">🏆</div>
-        <h3>Afro Pioneers — 3rd Place</h3>
-        <p>The 9th grade Afro Pioneers team placed third overall in the engineering capstone, outperforming several senior teams with their Afro Stadium community concept.</p>
-      </div>
-      <div class="highlight-card reveal">
-        <div class="highlight-icon">🎤</div>
-        <h3>Samari Marshall's Solo Presentation</h3>
-        <p>Senior Samari Marshall presented alone after teammates did not attend. Despite earlier challenges, he delivered a confident, well-structured presentation and was recognized with a $50 gift card and reinstated funding.</p>
-      </div>
-      <div class="highlight-card reveal">
-        <div class="highlight-icon">🏗️</div>
-        <h3>Architect Karl Stewart Visits</h3>
-        <p>Architect Karl Stewart visited twice, providing critique, technical guidance, and later served as a presentation judge — giving students direct access to a working design professional.</p>
-      </div>
-      <div class="highlight-card reveal">
-        <div class="highlight-icon">🚚</div>
-        <h3>Food Truck on Campus</h3>
-        <p>Entrepreneur Corey Knight (CEO, Community Cafe Express) brought his food truck to Dunbar High School, giving entrepreneurship students a firsthand look at real business operations.</p>
-      </div>
-      <div class="highlight-card reveal">
-        <div class="highlight-icon">🎬</div>
-        <h3>Filmed Podcast Production</h3>
-        <p>Sports Management students participated in a filmed podcast-style production with a real camera crew and microphones, interviewing peers about their business concepts and experiences.</p>
-      </div>
-      <div class="highlight-card reveal">
-        <div class="highlight-icon">🤖</div>
-        <h3>Sketch-to-3D AI Transformation</h3>
-        <p>Engineering students used AI tools to transform hand-drawn park sketches into 3D-style visual concepts and animations, elevating the quality of their presentations.</p>
-      </div>
-    </div>
-  </div>
-</section>
+
 
 
 <!-- STUDENTS -->
@@ -2157,18 +2119,7 @@
       <p style="margin-top:1.25rem; font-size:1.4rem; color:var(--gray); font-weight:600; line-height:1.4;"><strong style="color:var(--red);">100%</strong> of students said the program should continue</p>
     </div>
 
-    <h3 class="reveal" style="font-size:1.3rem; color:var(--white); margin-bottom:1.5rem; text-align:center;">Individual <span style="color:var(--red);">Student</span> Profiles</h3>
-
-    <div class="students-filter reveal">
-      <button class="filter-btn active" onclick="filterStudents('all', this)">All Students</button>
-      <button class="filter-btn" onclick="filterStudents('engineering', this)">Engineering</button>
-      <button class="filter-btn" onclick="filterStudents('sports', this)">Sports Management</button>
-      <button class="filter-btn" onclick="filterStudents('entrepreneurship', this)">Entrepreneurship</button>
-      <button class="filter-btn" onclick="filterStudents('ai', this)">AI Track</button>
-      <button class="filter-btn" onclick="filterStudents('leader', this)">Leaders</button>
-    </div>
-
-    <div class="students-grid" id="students-grid">
+    <div class="students-grid" id="students-grid" style="display:none;">
       <!-- Engineering Students -->
       <div class="student-card" data-track="engineering">
         <div class="student-header">
@@ -2479,38 +2430,7 @@
   </div>
 </section>
 
-<!-- GALLERY -->
-<section id="gallery">
-  <div class="section-inner">
-    <div class="section-tag reveal">Student Work Showcase</div>
-    <h2 class="section-title reveal">From <span>Sketch to Reality</span></h2>
-    <div class="divider reveal"></div>
 
-    <!-- SHOWCASE 2: Logo Sketch → AI Logo -->
-    <div class="showcase-group reveal">
-      <div class="showcase-group-title">Sports Management Track — Student Logo Design</div>
-      <div class="showcase-group-sub">Student hand-drew a logo concept — then brought it to life using <span>ChatGPT</span> image generation</div>
-      <div class="logo-pair">
-
-        <!-- Sketch -->
-        <div class="step-card" onclick="openLightbox('images/logo_sketch.jpg', 'Student hand-drawn logo sketch — &quot;Built to Compete / Driven to Win&quot;. The student designed this original logo concept featuring an M-shaped crest with a basketball center.')">
-          <span class="step-tool-badge">Hand Drawn</span>
-          <img src="images/logo_sketch.jpg" alt="Student hand-drawn logo sketch" loading="lazy" />
-          <div class="step-card-label"><span class="step-num">1</span> Student Sketch</div>
-        </div>
-
-        <!-- Final Logo -->
-        <div class="step-card" onclick="openLightbox('images/logo_final.png', 'AI-generated final logo — &quot;Built to Compete / Driven to Win&quot; — created using ChatGPT based on the student&apos;s original hand-drawn design. Gold and black luxury sports aesthetic.')">
-          <span class="step-tool-badge">ChatGPT</span>
-          <img src="images/logo_final.png" alt="AI-generated final logo" loading="lazy" />
-          <div class="step-card-label"><span class="step-num">2</span> AI Logo — ChatGPT</div>
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-</section>
 
 <!-- LIGHTBOX -->
 <div id="lightbox" onclick="closeLightbox(event)">
@@ -2542,7 +2462,7 @@
 <!-- SUCCESS FOCAL POINTS -->
 <section id="success" style="background: var(--deep); padding: 5rem 2rem; scroll-margin-top: 64px;">
   <div class="section-inner">
-    <div class="section-tag reveal">By the Numbers</div>
+    <div class="section-tag reveal" style="font-size:1rem; letter-spacing:0.18em;">By the Numbers</div>
     <h2 class="section-title reveal">Program <span>Success</span> Focal Points</h2>
     <div class="divider reveal"></div>
     <p class="section-desc reveal" style="max-width:720px;">Data-driven highlights that tell the story of real, measurable change — in attendance, academic engagement, and individual student growth across the program period.</p>
@@ -2634,7 +2554,7 @@
 <!-- OUTCOMES -->
 <section id="outcomes">
   <div class="section-inner">
-    <div class="section-tag reveal">Program Outcomes</div>
+    <div class="section-tag reveal" style="font-size:1rem; letter-spacing:0.18em;">Program Outcomes</div>
     <h2 class="section-title reveal">What Students <span>Gained</span></h2>
     <div class="divider reveal"></div>
 
@@ -2709,18 +2629,12 @@
   </div>
 </section>
 
-<!-- QUOTE BANNER -->
-<div class="quote-banner">
-  <blockquote>
-    <p>"The Engineering Program successfully engaged students in real-world problem solving, strengthened workforce readiness skills, and demonstrated the value of Career Shop DC's Earn &amp; Learn model in preparing students for future academic and career opportunities."</p>
-    <cite>— Engineering Program Report, Hope Cousin | Career Shop DC Operations Director</cite>
-  </blockquote>
-</div>
+
 
 <!-- IMPROVEMENTS -->
 <section id="improvements">
   <div class="section-inner">
-    <div class="section-tag reveal">Looking Ahead</div>
+    <div class="section-tag reveal" style="font-size:1rem; letter-spacing:0.18em;">Looking Ahead</div>
     <h2 class="section-title reveal">Areas for <span>Growth</span> &amp; Improvement</h2>
     <div class="divider reveal"></div>
     <p class="section-desc reveal">Identified across all tracks, these areas represent opportunities to strengthen future program implementation.</p>
