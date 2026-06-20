@@ -489,6 +489,9 @@
       width: 100%; display: block; object-fit: cover;
       transition: transform 0.4s ease;
     }
+    .step-card-large img, .step-card-large video {
+      height: 480px !important;
+    }
     .step-card:hover img { transform: scale(1.05); }
     .step-card-label {
       padding: 0.75rem 1rem;
@@ -517,6 +520,9 @@
     /* video step */
     .step-card video {
       height: 200px; background: #000;
+    }
+    .step-card-large video {
+      height: 480px !important; background: #000;
     }
     .video-play-hint {
       position: absolute; inset: 0;
@@ -2044,22 +2050,22 @@
             <div class="showcase-group" style="margin-top:2rem; width:100%; max-width:100%;">
               <div class="showcase-group-title">Engineering Track — Park Space Design</div>
               <div class="showcase-group-sub">Hand-drawn sketch transformed into a 3D render using <span>ChatGPT</span>, then animated into a video using <span>Seed Dance</span></div>
-              <div class="step-flow" style="width:100%;">
-                <div class="step-card" onclick="openLightbox('images/sketch_park.jpeg', 'Step 1 — Student hand-drawn park space design sketch (DAM Space Design). Students identified community needs in Wards 5, 7 &amp; 8 and designed solutions on paper.')">
+              <div class="step-flow" style="width:100%; align-items:stretch;">
+                <div class="step-card step-card-large" onclick="openLightbox('images/sketch_park.jpeg', 'Step 1 — Student hand-drawn park space design sketch (DAM Space Design). Students identified community needs in Wards 5, 7 &amp; 8 and designed solutions on paper.')">
                   <span class="step-tool-badge">Hand Drawn</span>
-                  <img src="images/sketch_park.jpeg" alt="Student hand-drawn park design sketch" style="height:280px;" loading="lazy" />
+                  <img src="images/sketch_park.jpeg" alt="Student hand-drawn park design sketch" style="height:480px;" loading="lazy" />
                   <div class="step-card-label"><span class="step-num">1</span> Hand-Drawn Sketch</div>
                 </div>
                 <div class="step-arrow">&#8594;</div>
-                <div class="step-card" onclick="openLightbox('images/park_3d_render.png', 'Step 2 — AI-generated 3D render of the student park design using ChatGPT. The sketch was transformed into a detailed aerial 3D visualization featuring a basketball court, playground, greenhouse, and fountain.')">
+                <div class="step-card step-card-large" onclick="openLightbox('images/park_3d_render.png', 'Step 2 — AI-generated 3D render of the student park design using ChatGPT. The sketch was transformed into a detailed aerial 3D visualization featuring a basketball court, playground, greenhouse, and fountain.')">
                   <span class="step-tool-badge">ChatGPT</span>
-                  <img src="images/park_3d_render.png" alt="3D render of park design" style="height:280px;" loading="lazy" />
+                  <img src="images/park_3d_render.png" alt="3D render of park design" style="height:480px;" loading="lazy" />
                   <div class="step-card-label"><span class="step-num">2</span> 3D Render — ChatGPT</div>
                 </div>
                 <div class="step-arrow">&#8594;</div>
-                <div class="step-card" id="video-card">
+                <div class="step-card step-card-large" id="video-card">
                   <span class="step-tool-badge">Seed Dance</span>
-                  <video id="park-video" src="images/park_animation.mp4" poster="images/park_animation_thumb.jpg" style="height:280px;" muted loop playsinline preload="metadata"></video>
+                  <video id="park-video" src="images/park_animation.mp4" poster="images/park_animation_thumb.jpg" style="height:480px;" muted loop playsinline preload="metadata"></video>
                   <div class="video-play-hint" id="video-hint">
                     <div class="play-icon" onclick="toggleVideo()">&#9654;</div>
                   </div>
