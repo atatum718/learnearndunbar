@@ -199,25 +199,111 @@
 
     /* ===== ABOUT SECTION ===== */
     #about { background: var(--deep); }
-    .about-grid {
+    /* ===== ABOUT NEW INTERACTIVE LAYOUT ===== */
+    .about-new-grid {
       display: grid; grid-template-columns: 1fr 1fr;
       gap: 4rem; align-items: center; margin-top: 3rem;
     }
-    .about-text p {
-      color: var(--off-white); line-height: 1.8; margin-bottom: 1rem; font-size: 0.95rem;
+    .about-tagline {
+      font-size: 1.2rem; line-height: 1.7; color: var(--off-white);
+      margin-bottom: 2rem;
     }
-    .about-image {
-      position: relative; border-radius: 12px; overflow: hidden;
+    .about-tagline strong { color: var(--white); }
+    .about-stat-chips {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0.75rem; margin-bottom: 2rem;
     }
-    .about-image img {
-      width: 100%; display: block; border-radius: 12px;
-      transition: transform 0.4s ease;
+    .about-chip {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 10px; padding: 1rem;
+      display: flex; flex-direction: column; align-items: center;
+      transition: border-color 0.3s, transform 0.3s;
     }
-    .about-image:hover img { transform: scale(1.03); }
-    .about-image::before {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(204,0,0,0.3) 0%, transparent 60%);
-      z-index: 1; border-radius: 12px; pointer-events: none;
+    .about-chip:hover { border-color: var(--red); transform: translateY(-3px); }
+    .chip-num {
+      font-size: 1.6rem; font-weight: 900; color: var(--red);
+      line-height: 1;
+    }
+    .chip-label {
+      font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--gray); margin-top: 0.3rem; text-align: center;
+    }
+    .about-sub {
+      font-size: 0.88rem; color: var(--gray); line-height: 1.7;
+    }
+    /* Hot-spot logo */
+    .about-hotspot-wrap {
+      position: relative; display: flex; flex-direction: column; align-items: center;
+    }
+    .about-hotspot-logo {
+      position: relative; width: 100%; max-width: 420px;
+    }
+    .about-hotspot-logo img {
+      width: 100%; border-radius: 50%; background: #fff;
+      padding: 8px; display: block;
+    }
+    .hotspot {
+      position: absolute; width: 28px; height: 28px;
+      cursor: pointer; transform: translate(-50%, -50%);
+    }
+    .hotspot-dot {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 14px; height: 14px; border-radius: 50%;
+      background: var(--red); border: 2px solid var(--white);
+      z-index: 2; transition: transform 0.2s;
+    }
+    .hotspot:hover .hotspot-dot { transform: translate(-50%, -50%) scale(1.3); }
+    .hotspot-pulse {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 28px; height: 28px; border-radius: 50%;
+      background: rgba(204,0,0,0.4);
+      animation: pulse-ring 1.8s ease-out infinite;
+    }
+    @keyframes pulse-ring {
+      0% { transform: translate(-50%,-50%) scale(0.6); opacity: 1; }
+      100% { transform: translate(-50%,-50%) scale(2.2); opacity: 0; }
+    }
+    .hotspot-hint {
+      font-size: 0.75rem; color: var(--gray); margin-top: 0.75rem;
+      text-align: center; letter-spacing: 0.05em;
+    }
+    /* Hot-spot pop-up cards */
+    .hotspot-card {
+      display: none; position: absolute;
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      background: var(--card); border: 1px solid var(--red);
+      border-radius: 14px; padding: 1.5rem 1.75rem;
+      width: 280px; z-index: 20;
+      box-shadow: 0 8px 32px rgba(204,0,0,0.3);
+      animation: cardPop 0.25s ease;
+    }
+    .hotspot-card.active { display: block; }
+    @keyframes cardPop {
+      from { opacity: 0; transform: translate(-50%, -50%) scale(0.85); }
+      to   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    }
+    .hc-close {
+      position: absolute; top: 0.6rem; right: 0.75rem;
+      background: none; border: none; color: var(--gray);
+      font-size: 0.9rem; cursor: pointer;
+    }
+    .hc-close:hover { color: var(--red); }
+    .hc-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+    .hotspot-card h4 {
+      font-size: 1rem; font-weight: 800; color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+    .hotspot-card p {
+      font-size: 0.82rem; color: var(--off-white); line-height: 1.7;
+      margin-bottom: 0.75rem;
+    }
+    .hc-tag {
+      display: inline-block; background: var(--red-dark);
+      color: var(--white); font-size: 0.68rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      padding: 0.25rem 0.75rem; border-radius: 20px;
     }
     .instructor-list {
       list-style: none; margin-top: 1.5rem;
@@ -1280,23 +1366,86 @@
     <div class="section-tag reveal">Program Overview</div>
     <h2 class="section-title reveal">Career Shop DC —<br/><span>Dunbar High School</span></h2>
     <div class="divider reveal"></div>
-    <div class="about-grid">
-      <div class="about-text reveal-left">
-        <p>The Learn &amp; Earn Program at Paul Laurence Dunbar High School served both ninth-grade and senior students enrolled in career-focused coursework. Instruction was delivered collaboratively across four career tracks: Engineering, Sports Management, Entrepreneurship, and AI.</p>
-        <p>Across all tracks, students engaged in project-based learning focused on community problem-solving, workforce readiness, and real-world skill development. The program introduced students to professional expectations, design thinking, research methods, and presentation skills.</p>
-        <p>Students were expected to treat their participation as a work-based learning experience — arriving on time, communicating professionally, and delivering high-quality work.</p>
-        <ul class="instructor-list">
-          <li>Ms. Beard — Senior Engineering Instructor</li>
-          <li>Mr. Robinson — 9th Grade African American History &amp; Paul Laurence Dunbar History Teacher</li>
-          <li>Ms. Hope Cousin — Career Shop DC Operations Director &amp; 9th Grade Engineering Facilitator</li>
-          <li>Malik Worthy — Sports Management Career Pathway Instructor</li>
-          <li>Trezell Ragas — Entrepreneurship Track Lead</li>
-          <li>Alecia Tatum — AI Track Lead</li>
-        </ul>
+    <!-- ABOUT INTERACTIVE LAYOUT -->
+    <div class="about-new-grid reveal">
+
+      <!-- LEFT: Tagline + Stats -->
+      <div class="about-left">
+        <p class="about-tagline">A <strong>Work-Based Learning Internship</strong> where DC youth earn <strong>$17.95/hr</strong> while building real career skills across four dynamic tracks.</p>
+        <div class="about-stat-chips">
+          <div class="about-chip"><span class="chip-num">191+</span><span class="chip-label">Students Served</span></div>
+          <div class="about-chip"><span class="chip-num">$17.95</span><span class="chip-label">Per Hour Earned</span></div>
+          <div class="about-chip"><span class="chip-num">6</span><span class="chip-label">Weeks of Learning</span></div>
+          <div class="about-chip"><span class="chip-num">4</span><span class="chip-label">Career Tracks</span></div>
+        </div>
+        <p class="about-sub">Students were expected to demonstrate professionalism — arriving on time, communicating effectively, and delivering high-quality work as part of a real work-based learning experience.</p>
       </div>
-      <div class="about-image reveal-right">
-        <img src="images/learn_earn_logo.png" alt="Career Shop + Dunbar — Learn & Earn Washington D.C. Official Logo" loading="lazy" style="border-radius:50%; background:#fff; padding:8px;" />
+
+      <!-- RIGHT: Interactive Hot-Spot Logo -->
+      <div class="about-hotspot-wrap">
+        <div class="about-hotspot-logo">
+          <img src="images/learn_earn_logo.png" alt="Learn &amp; Earn Logo" />
+
+          <!-- Dot 1: Engineering — top left -->
+          <div class="hotspot" style="top:12%; left:10%;" onclick="openHotspot('engineering')">
+            <span class="hotspot-pulse"></span>
+            <span class="hotspot-dot"></span>
+          </div>
+
+          <!-- Dot 2: Sports Management — top right -->
+          <div class="hotspot" style="top:12%; right:10%;" onclick="openHotspot('sports')">
+            <span class="hotspot-pulse"></span>
+            <span class="hotspot-dot"></span>
+          </div>
+
+          <!-- Dot 3: Entrepreneurship — bottom left -->
+          <div class="hotspot" style="bottom:12%; left:10%;" onclick="openHotspot('entrepreneurship')">
+            <span class="hotspot-pulse"></span>
+            <span class="hotspot-dot"></span>
+          </div>
+
+          <!-- Dot 4: AI — bottom right -->
+          <div class="hotspot" style="bottom:12%; right:10%;" onclick="openHotspot('ai')">
+            <span class="hotspot-pulse"></span>
+            <span class="hotspot-dot"></span>
+          </div>
+        </div>
+        <p class="hotspot-hint">&#9654; Click the dots to explore each career track</p>
+
+        <!-- Pop-up cards -->
+        <div class="hotspot-card" id="hc-engineering">
+          <button class="hc-close" onclick="closeHotspot('engineering')">&#10005;</button>
+          <div class="hc-icon">&#127963;</div>
+          <h4>Engineering Track</h4>
+          <p>Students designed community-focused solutions using architecture, urban planning, and design thinking. Capstone projects were reviewed by industry professionals including a Senior Designer at Amtrak.</p>
+          <div class="hc-tag">Grades 9–12</div>
+        </div>
+
+        <div class="hotspot-card" id="hc-sports">
+          <button class="hc-close" onclick="closeHotspot('sports')">&#10005;</button>
+          <div class="hc-icon">&#127944;</div>
+          <h4>Sports Management Track</h4>
+          <p>Students explored the business of sports — from player contracts and compliance to brand management. Guest speakers included an NFL Agent and a Georgetown University Athletic Director.</p>
+          <div class="hc-tag">Grades 9–12</div>
+        </div>
+
+        <div class="hotspot-card" id="hc-entrepreneurship">
+          <button class="hc-close" onclick="closeHotspot('entrepreneurship')">&#10005;</button>
+          <div class="hc-icon">&#128218;</div>
+          <h4>Entrepreneurship Track</h4>
+          <p>Students developed business plans, explored food entrepreneurship, and learned from real founders including a vegan food truck CEO with celebrity clientele and a community reentry entrepreneur.</p>
+          <div class="hc-tag">Grades 9–12</div>
+        </div>
+
+        <div class="hotspot-card" id="hc-ai">
+          <button class="hc-close" onclick="closeHotspot('ai')">&#10024;</button>
+          <div class="hc-icon">&#129302;</div>
+          <h4>Artificial Intelligence Track</h4>
+          <p>Students used AI tools including ChatGPT to create original work — from 3D architectural renders to animated videos and logo design. Projects demonstrated how AI amplifies creative and professional output.</p>
+          <div class="hc-tag">Grades 10–12</div>
+        </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -2714,6 +2863,23 @@
       }
     });
   }
+
+  // ===== HOTSPOT =====
+  function openHotspot(track) {
+    document.querySelectorAll('.hotspot-card').forEach(c => c.classList.remove('active'));
+    const card = document.getElementById('hc-' + track);
+    if (card) card.classList.add('active');
+  }
+  function closeHotspot(track) {
+    const card = document.getElementById('hc-' + track);
+    if (card) card.classList.remove('active');
+  }
+  // Close hotspot cards when clicking outside
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.hotspot') && !e.target.closest('.hotspot-card')) {
+      document.querySelectorAll('.hotspot-card').forEach(c => c.classList.remove('active'));
+    }
+  });
 
   // ===== ACCORDION =====
   function toggleAccordion(header) {
