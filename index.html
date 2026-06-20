@@ -479,7 +479,7 @@
       display: flex; align-items: stretch; gap: 0; flex-wrap: wrap;
     }
     .step-card {
-      flex: 1; min-width: 220px;
+      flex: 1; min-width: 240px;
       background: var(--card); border: 1px solid var(--border);
       border-radius: 10px; overflow: hidden; position: relative;
       cursor: pointer; transition: border-color 0.3s, transform 0.3s;
@@ -852,6 +852,13 @@
     }
     .participants-photo-grid .spk-img:first-child {
       grid-column: span 2;
+    }
+    .participants-photo-grid .spk-img:nth-child(4) {
+      grid-column: span 2;
+    }
+    .participants-photo-grid .spk-img:nth-child(5) {
+      grid-column: span 3;
+      aspect-ratio: 16/7;
     }
     @media (max-width: 900px) {
       .people-cards-grid { grid-template-columns: 1fr; }
@@ -2035,10 +2042,10 @@
             </ul>
 
             <!-- From Sketch to Reality -->
-            <div class="showcase-group" style="margin-top:2rem;">
+            <div class="showcase-group" style="margin-top:2rem; width:100%; max-width:100%;">
               <div class="showcase-group-title">Engineering Track — Park Space Design</div>
               <div class="showcase-group-sub">Hand-drawn sketch transformed into a 3D render using <span>ChatGPT</span>, then animated into a video using <span>Seed Dance</span></div>
-              <div class="step-flow">
+              <div class="step-flow" style="width:100%;">
                 <div class="step-card" onclick="openLightbox('images/sketch_park.jpeg', 'Step 1 — Student hand-drawn park space design sketch (DAM Space Design). Students identified community needs in Wards 5, 7 &amp; 8 and designed solutions on paper.')">
                   <span class="step-tool-badge">Hand Drawn</span>
                   <img src="images/sketch_park.jpeg" alt="Student hand-drawn park design sketch" style="height:280px;" loading="lazy" />
