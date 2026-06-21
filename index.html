@@ -1387,6 +1387,7 @@
       .future-grid { grid-template-columns: 1fr; }
     }
   </style>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
 <body>
 
@@ -2343,26 +2344,123 @@
     <p class="section-desc reveal">127 students completed program surveys at the conclusion of the Learn &amp; Earn program. The results speak for themselves — overwhelming support, improved attendance, and unanimous agreement that the program should continue.</p>
     <p class="reveal" style="text-align:left; font-weight:700; font-style:italic; color:var(--white); margin-top:0.5rem;">Full Surveys Available</p>
 
-    <!-- CHART IMAGE -->
-    <div class="reveal" style="margin:2.5rem auto 3rem; max-width:900px; text-align:center;">
-      <p style="font-size:1.6rem; font-weight:700; color:var(--white); margin-bottom:1.25rem; line-height:1.3;">Would you recommend people to this program?</p>
-      <img src="images/chart_recommend_final.png" alt="Would you recommend this program — 79.5% rated 5 out of 5" style="width:100%; border-radius:14px; display:block;" loading="lazy" />
-      <p style="margin-top:1.25rem; font-size:1.4rem; color:var(--gray); font-weight:600; line-height:1.4;">79.5% of students gave the highest rating of <strong style="color:var(--red);">5 out of 5</strong></p>
+    <!-- CHARTS ROW -->
+    <div class="reveal" style="display:flex; flex-wrap:wrap; gap:2rem; justify-content:center; align-items:flex-start; margin:2.5rem auto 3rem;">
+
+      <!-- Chart 1: Would you recommend? -->
+      <div style="flex:1 1 280px; max-width:380px; text-align:center;">
+        <p style="font-size:1.1rem; font-weight:700; color:var(--white); margin-bottom:1rem; line-height:1.4;">Would you recommend people to this program?</p>
+        <p style="font-size:0.8rem; color:var(--gray); margin-bottom:0.75rem;">127 responses</p>
+        <canvas id="chartRecommend" width="300" height="300"></canvas>
+        <div id="legendRecommend" style="margin-top:0.75rem; text-align:left; display:inline-block;"></div>
+        <p style="margin-top:1rem; font-size:1rem; color:var(--gray); font-weight:600; line-height:1.4;">79.5% of students gave the highest rating of <strong style="color:var(--red);">5 out of 5</strong></p>
+      </div>
+
+      <!-- Chart 2: Attendance -->
+      <div style="flex:1 1 280px; max-width:380px; text-align:center;">
+        <p style="font-size:1.1rem; font-weight:700; color:var(--white); margin-bottom:1rem; line-height:1.4;">Were there days when you came to school when you normally would not have?</p>
+        <p style="font-size:0.8rem; color:var(--gray); margin-bottom:0.75rem;">126 responses</p>
+        <canvas id="chartAttendance" width="300" height="300"></canvas>
+        <div id="legendAttendance" style="margin-top:0.75rem; text-align:left; display:inline-block;"></div>
+        <p style="margin-top:1rem; font-size:1rem; color:var(--gray); font-weight:600; line-height:1.4;"><strong style="color:var(--red);">84.1%</strong> said the program brought them to school on days they otherwise would have stayed home</p>
+      </div>
+
+      <!-- Chart 3: Should continue -->
+      <div style="flex:1 1 280px; max-width:380px; text-align:center;">
+        <p style="font-size:1.1rem; font-weight:700; color:var(--white); margin-bottom:1rem; line-height:1.4;">Do you think the program should continue?</p>
+        <p style="font-size:0.8rem; color:var(--gray); margin-bottom:0.75rem;">126 responses</p>
+        <canvas id="chartContinue" width="300" height="300"></canvas>
+        <div id="legendContinue" style="margin-top:0.75rem; text-align:left; display:inline-block;"></div>
+        <p style="margin-top:1rem; font-size:1rem; color:var(--gray); font-weight:600; line-height:1.4;"><strong style="color:var(--red);">100%</strong> of students said the program should continue</p>
+      </div>
+
     </div>
 
-    <!-- CHART 2 -->
-    <div class="reveal" style="margin:2.5rem auto 3rem; max-width:900px; text-align:center;">
-      <p style="font-size:1.6rem; font-weight:700; color:var(--white); margin-bottom:1.25rem; line-height:1.3;">Were there days when you came to school when you normally would not have?</p>
-      <img src="images/chart_attendance_final.png" alt="Were there days you came to school because of this program — 84.1% Yes" style="width:100%; border-radius:14px; display:block;" loading="lazy" />
-      <p style="margin-top:1.25rem; font-size:1.4rem; color:var(--gray); font-weight:600; line-height:1.4;"><strong style="color:var(--red);">84.1%</strong> said the program brought them to school on days they otherwise would have stayed home</p>
-    </div>
+    <script>
+    (function() {
+      // Color palette: red, gold, white, crimson, steel-blue, silver
+      var PIE_COLORS = ['#B22222','#F5A623','#FFFFFF','#8B0000','#4A90D9','#A0A0A0'];
+      var LEGEND_TEXT = '#cccccc';
 
-    <!-- CHART 3 -->
-    <div class="reveal" style="margin:2.5rem auto 3rem; max-width:900px; text-align:center;">
-      <p style="font-size:1.6rem; font-weight:700; color:var(--white); margin-bottom:1.25rem; line-height:1.3;">Do you think the program should continue?</p>
-      <img src="images/chart_continue_final.png" alt="Do you think the program should continue — 100% Yes" style="width:100%; border-radius:14px; display:block;" loading="lazy" />
-      <p style="margin-top:1.25rem; font-size:1.4rem; color:var(--gray); font-weight:600; line-height:1.4;"><strong style="color:var(--red);">100%</strong> of students said the program should continue</p>
-    </div>
+      function buildLegend(containerId, labels, data, colors) {
+        var el = document.getElementById(containerId);
+        if (!el) return;
+        var html = '';
+        var total = data.reduce(function(a,b){return a+b;},0);
+        labels.forEach(function(lbl, i) {
+          var pct = total > 0 ? ((data[i]/total)*100).toFixed(1) : '0.0';
+          html += '<div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;">';
+          html += '<span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:'+colors[i]+';flex-shrink:0;"></span>';
+          html += '<span style="color:'+LEGEND_TEXT+';font-size:0.8rem;">'+lbl+' &nbsp;<span style="color:#888;">('+(data[i])+')</span>&nbsp; '+pct+'%</span>';
+          html += '</div>';
+        });
+        el.innerHTML = html;
+      }
+
+      function makeChart(id, labels, data, colors) {
+        var ctx = document.getElementById(id);
+        if (!ctx) return;
+        new Chart(ctx, {
+          type: 'pie',
+          data: {
+            labels: labels,
+            datasets: [{
+              data: data,
+              backgroundColor: colors,
+              borderColor: '#1a1a1a',
+              borderWidth: 2
+            }]
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                callbacks: {
+                  label: function(ctx) {
+                    var total = ctx.dataset.data.reduce(function(a,b){return a+b;},0);
+                    var pct = ((ctx.parsed/total)*100).toFixed(1);
+                    return ' '+ctx.label+': '+pct+'% ('+ctx.parsed+')';
+                  }
+                }
+              },
+              datalabels: {
+                color: '#fff',
+                font: { weight: 'bold', size: 13 },
+                formatter: function(value, ctx) {
+                  var total = ctx.dataset.data.reduce(function(a,b){return a+b;},0);
+                  var pct = ((value/total)*100).toFixed(1);
+                  return pct > 2 ? pct+'%' : '';
+                }
+              }
+            }
+          }
+        });
+      }
+
+      // Chart 1 — Recommend (1-5 scale)
+      var rec_labels = ['1','2','3','4','5'];
+      var rec_data   = [0, 1, 7, 18, 101];
+      var rec_colors = [PIE_COLORS[3], PIE_COLORS[0], PIE_COLORS[1], PIE_COLORS[4], PIE_COLORS[2]];
+      makeChart('chartRecommend', rec_labels, rec_data, rec_colors);
+      buildLegend('legendRecommend', rec_labels, rec_data, rec_colors);
+
+      // Chart 2 — Attendance
+      var att_labels = ['Yes','No'];
+      var att_data   = [106, 20];
+      var att_colors = [PIE_COLORS[4], PIE_COLORS[0]];
+      makeChart('chartAttendance', att_labels, att_data, att_colors);
+      buildLegend('legendAttendance', att_labels, att_data, att_colors);
+
+      // Chart 3 — Continue
+      var con_labels = ['Yes','No'];
+      var con_data   = [126, 0];
+      var con_colors = [PIE_COLORS[0], PIE_COLORS[3]];
+      makeChart('chartContinue', con_labels, con_data, con_colors);
+      buildLegend('legendContinue', con_labels, con_data, con_colors);
+
+    })();
+    </script>
 
     <div class="students-grid" id="students-grid" style="display:none;">
       <!-- Engineering Students -->
