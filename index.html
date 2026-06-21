@@ -1163,6 +1163,74 @@
       margin: 3.5rem 0;
     }
 
+    /* ===== HEART BALLOONS ===== */
+    .hrt-balloon {
+      --bc: #B22222;
+      --tc: #fff;
+      --brd: transparent;
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 140px;
+      height: 160px;
+      background: var(--bc);
+      border: 3px solid var(--brd);
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      cursor: pointer;
+      transition: transform 0.25s cubic-bezier(.34,1.56,.64,1), box-shadow 0.25s;
+      animation: floatBalloon 3s ease-in-out infinite;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      text-align: center;
+      padding: 1rem 0.75rem;
+    }
+    .hrt-balloon:nth-child(odd)  { animation-delay: 0s; }
+    .hrt-balloon:nth-child(even) { animation-delay: 1.5s; }
+    .hrt-balloon:nth-child(3n)   { animation-delay: 0.8s; }
+    /* bottom point of heart */
+    .hrt-balloon::before {
+      content: '';
+      position: absolute;
+      bottom: -18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 20px solid var(--bc);
+      filter: drop-shadow(0 3px 4px rgba(0,0,0,0.12));
+    }
+    /* string */
+    .hrt-balloon::after {
+      content: '';
+      position: absolute;
+      bottom: -46px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 28px;
+      background: rgba(0,0,0,0.25);
+      border-radius: 1px;
+    }
+    .hrt-balloon:hover {
+      transform: scale(1.12) translateY(-6px);
+      box-shadow: 0 14px 36px rgba(0,0,0,0.22);
+      animation-play-state: paused;
+    }
+    .hrt-balloon span {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--tc);
+      line-height: 1.35;
+      display: block;
+      pointer-events: none;
+    }
+    @keyframes floatBalloon {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-8px); }
+    }
+
     /* ===== SUCCESS FOCAL POINTS ===== */
     .success-stats {
       display: grid; grid-template-columns: repeat(3, 1fr);
@@ -1479,10 +1547,45 @@
   </div>
 </section>
 
-<!-- VOICES FROM THE HEART -->
-<div style="width:100%; text-align:center; background:#fff; padding:2rem 0;">
-  <img src="images/voices_from_heart.png" alt="Voices from the Heart of Learn and Earn" style="width:85%; max-width:860px; height:auto; display:inline-block; object-fit:contain;" />
-</div>
+<!-- VOICES FROM THE HEART - INTERACTIVE BALLOONS -->
+<section id="voices-heart" style="background:#fff; padding:3rem 1.5rem;">
+  <div style="max-width:960px; margin:0 auto; text-align:center;">
+    <div style="margin-bottom:2rem;">
+      <p style="font-size:0.85rem; font-weight:800; letter-spacing:0.18em; color:#B22222; text-transform:uppercase; margin:0 0 0.4rem;">25 Student Voices. One Powerful Impact.</p>
+      <h2 style="font-size:2rem; font-weight:900; color:#1a1a2e; margin:0 0 0.3rem;">Voices <em style="font-family:Georgia,serif; color:#B22222;">from the</em> Heart</h2>
+      <p style="font-size:1.1rem; font-weight:700; color:#1a1a2e; margin:0 0 0.5rem;">of Learn &amp; Earn</p>
+      <p style="font-size:0.82rem; color:#666; font-style:italic;">Click any balloon to hear it read aloud &mdash; audio coming soon</p>
+    </div>
+    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:1rem; align-items:flex-start;">
+
+      <div class="hrt-balloon" style="--bc:#B22222;"><span>Save my money.</span></div>
+      <div class="hrt-balloon" style="--bc:#fff; --tc:#B22222; --brd:#B22222;"><span>It allowed me to save up.</span></div>
+      <div class="hrt-balloon" style="--bc:#F5A623;"><span>It helped me get better at saving my money.</span></div>
+      <div class="hrt-balloon" style="--bc:#B22222;"><span>It helped me provide for myself independently.</span></div>
+      <div class="hrt-balloon" style="--bc:#fff; --tc:#1a1a2e; --brd:#F5A623;"><span>I was able to pay for my end-of-year trip and school supplies.</span></div>
+      <div class="hrt-balloon" style="--bc:#F5A623;"><span>It helped me put more money toward college.</span></div>
+      <div class="hrt-balloon" style="--bc:#B22222;"><span>I was able to pay for many senior activities on my own.</span></div>
+      <div class="hrt-balloon" style="--bc:#fff; --tc:#B22222; --brd:#B22222;"><span>I was able to get food for me and my family.</span></div>
+      <div class="hrt-balloon" style="--bc:#F5A623;"><span>I've been able to budget better.</span></div>
+      <div class="hrt-balloon" style="--bc:#B22222;"><span>I am saving for college.</span></div>
+      <div class="hrt-balloon" style="--bc:#fff; --tc:#1a1a2e; --brd:#F5A623;"><span>Help with household bills.</span></div>
+      <div class="hrt-balloon" style="--bc:#F5A623;"><span>The extra earnings helped me pay for personal expenses and learn how to manage my finances.</span></div>
+      <div class="hrt-balloon" style="--bc:#B22222;"><span>The money I earned helped me push my snack business and save.</span></div>
+      <div class="hrt-balloon" style="--bc:#fff; --tc:#B22222; --brd:#B22222;"><span>It allowed me to give money to my mom.</span></div>
+      <div class="hrt-balloon" style="--bc:#F5A623;"><span>It allowed me to buy the things I want and need, go out, and gain independence.</span></div>
+      <div class="hrt-balloon" style="--bc:#B22222;"><span>Pay for my phone bill.</span></div>
+      <div class="hrt-balloon" style="--bc:#fff; --tc:#1a1a2e; --brd:#F5A623;"><span>It allowed me to provide for my family.</span></div>
+      <div class="hrt-balloon" style="--bc:#F5A623;"><span>It allowed me to treat my mom.</span></div>
+      <div class="hrt-balloon" style="--bc:#B22222;"><span>The money allowed me to save up for important things.</span></div>
+      <div class="hrt-balloon" style="--bc:#fff; --tc:#B22222; --brd:#B22222;"><span>It allowed me to work on my money management early.</span></div>
+      <div class="hrt-balloon" style="--bc:#F5A623;"><span>The earnings allowed me to invest.</span></div>
+      <div class="hrt-balloon" style="--bc:#B22222;"><span>It allowed me to have a little bit more independence.</span></div>
+      <div class="hrt-balloon" style="--bc:#fff; --tc:#1a1a2e; --brd:#F5A623;"><span>It helped me plan a more exciting summer.</span></div>
+
+    </div>
+    <p style="margin-top:2rem; font-size:0.85rem; font-weight:700; color:#B22222; letter-spacing:0.1em; text-transform:uppercase;">✨ Thank you for sharing your stories and inspiring others! ✨</p>
+  </div>
+</section>
 
 <!-- EDUCATOR VIDEO 2 FEATURE -->
 <div style="background:var(--black); padding:3rem 2rem; border-top:1px solid var(--border); border-bottom:1px solid var(--border); display:flex; justify-content:center;">
@@ -2665,11 +2768,28 @@
 
 
 
-<!-- STUDENT VOICES BALLOON IMAGE -->
-<div style="width:100%; text-align:center; background:#000; padding:2rem 0;">
-  <p style="color:#fff; font-size:1.6rem; font-weight:800; letter-spacing:0.08em; margin:0 0 0.75rem; text-transform:uppercase;">Real Feedback, Real Time</p>
-  <img src="images/student_voices_balloons.png" alt="Student Voices Lifting Us Up — Dunbar Learn and Earn Program" style="width:90%; max-width:900px; height:auto; display:inline-block;" />
-</div>
+<!-- STUDENT VOICES BALLOON SECTION - INTERACTIVE -->
+<section style="background:#0a0a1a; padding:3rem 1.5rem;">
+  <div style="max-width:960px; margin:0 auto; text-align:center;">
+    <p style="font-size:0.85rem; font-weight:800; letter-spacing:0.18em; color:#F5A623; text-transform:uppercase; margin:0 0 0.5rem;">Real Feedback, Real Time</p>
+    <h2 style="font-size:2rem; font-weight:900; color:#fff; margin:0 0 0.3rem;">Student Voices <span style="color:#B22222;">Lifting Us Up!</span> &#9825;</h2>
+    <p style="font-size:0.82rem; color:#aaa; font-style:italic; margin:0 0 2rem;">Click any balloon to hear it read aloud &mdash; audio coming soon</p>
+    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:1.2rem; align-items:flex-start;">
+
+      <div class="hrt-balloon" style="--bc:#B22222;"><span>&ldquo;Thank you for this opportunity.&rdquo;</span></div>
+      <div class="hrt-balloon" style="--bc:#F5A623;"><span>&ldquo;Thank you for everything.&rdquo;</span></div>
+      <div class="hrt-balloon" style="--bc:#fff; --tc:#1a1a2e; --brd:#B22222;"><span>&ldquo;Ms. Tatum was great and super supportive. I would love to share this great experience with other students as well.&rdquo;</span></div>
+      <div class="hrt-balloon" style="--bc:#B22222;"><span>&ldquo;Do other schools in DC have this program?&rdquo;</span></div>
+      <div class="hrt-balloon" style="--bc:#F5A623;"><span>&ldquo;Thank you for teaching me how to be a sports manager and to present my business.&rdquo;</span></div>
+      <div class="hrt-balloon" style="--bc:#fff; --tc:#B22222; --brd:#F5A623;"><span>&ldquo;Thank you for the learning I&rsquo;ve done in this class!&rdquo;</span></div>
+      <div class="hrt-balloon" style="--bc:#B22222;"><span>&ldquo;I would like to say thank you for giving me the opportunity.&rdquo;</span></div>
+      <div class="hrt-balloon" style="--bc:#F5A623;"><span>&ldquo;Thank you to the entire community. I am very grateful.&rdquo;</span></div>
+      <div class="hrt-balloon" style="--bc:#fff; --tc:#1a1a2e; --brd:#B22222;"><span>&ldquo;Thank you very much.&rdquo;</span></div>
+      <div class="hrt-balloon" style="--bc:#B22222;"><span>&ldquo;Thank you and I want to participate next year.&rdquo;</span></div>
+
+    </div>
+  </div>
+</section>
 
 <!-- IMPROVEMENTS -->
 <section id="improvements">
