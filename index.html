@@ -3256,7 +3256,7 @@
         </ul>
       </div>
       <div class="outcome-block reveal-right">
-        <h3><span class="icon">💪</span> Socio-Emotional Growth</h3>
+        <h3><span class="icon">💪</span> Socio-Emotional Academic Development (SEAD)</h3>
         <ul class="outcome-list">
           <li>Increased confidence and self-belief</li>
           <li>Improved communication and peer collaboration</li>
@@ -3664,8 +3664,8 @@
 
 <script>
   // ===== VOICE BUBBLE AUDIO PLAYER =====
+  var currentAudio = null; // global so playBubbleAudio can share it
   (function() {
-    var currentAudio = null;
 
     document.querySelectorAll('.vfh-bubble[data-audio]').forEach(function(bubble) {
       bubble.addEventListener('click', function() {
