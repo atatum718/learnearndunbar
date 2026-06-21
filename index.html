@@ -1452,12 +1452,126 @@
   </div>
 </section>
 
-<!-- PROGRAM HERO PHOTO -->
-<div style="background:var(--black); padding:2rem 2rem 0.5rem; text-align:center;">
-  <img src="images/staff_presentation_day.jpg" alt="Career Shop Dunbar — Learn &amp; Earn staff and team at Presentation Day" style="max-width:920px; width:100%; height:auto; display:inline-block; border-radius:10px;" />
-  <div style="max-width:920px; margin:0.5rem auto 0; text-align:right; padding-right:2px;">
-    <span style="font-size:0.75rem; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; color:var(--gray);">Career Shop DC Team</span>
+<!-- PROGRAM HERO PHOTO + MR. JACOBS SPOTLIGHT FOCUS -->
+<style>
+  .spotlight-wrap {
+    display: flex;
+    gap: 2.5rem;
+    align-items: stretch;
+    justify-content: center;
+    max-width: 1060px;
+    margin: 0 auto;
+    transition: all 0.3s;
+  }
+  .spotlight-panel {
+    flex: 1 1 0;
+    min-width: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    transition: opacity 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
+    cursor: default;
+  }
+  .spotlight-wrap:hover .spotlight-panel {
+    opacity: 0.38;
+    transform: scale(0.97);
+  }
+  .spotlight-wrap:hover .spotlight-panel:hover {
+    opacity: 1;
+    transform: scale(1.02);
+    box-shadow: 0 12px 48px rgba(204,0,0,0.35);
+    z-index: 2;
+  }
+  .spotlight-photo {
+    width: 100%;
+    height: 100%;
+    min-height: 340px;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+  .spotlight-caption {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, transparent 100%);
+    padding: 1.2rem 1rem 0.9rem;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+  }
+  .spotlight-jacobs {
+    display: flex;
+    flex-direction: column;
+    background: #111;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .spotlight-jacobs video {
+    width: 100%;
+    display: block;
+    flex-shrink: 0;
+  }
+  .spotlight-quote-block {
+    padding: 1.25rem 1.4rem 1.1rem;
+    border-left: 3px solid var(--red);
+    margin: 1rem 1rem 0.75rem;
+    background: rgba(204,0,0,0.06);
+    border-radius: 0 6px 6px 0;
+  }
+  .spotlight-quote-block blockquote {
+    font-size: 0.95rem;
+    font-style: italic;
+    color: #e8e8e8;
+    line-height: 1.65;
+    margin: 0 0 0.6rem;
+  }
+  .spotlight-quote-block cite {
+    font-size: 0.78rem;
+    font-style: normal;
+    font-weight: 700;
+    color: var(--red);
+    letter-spacing: 0.04em;
+  }
+  .spotlight-divider {
+    width: 60px;
+    height: 3px;
+    background: var(--red);
+    border-radius: 2px;
+    margin: 2rem auto 0;
+  }
+  @media (max-width: 700px) {
+    .spotlight-wrap { flex-direction: column; }
+    .spotlight-panel { min-height: 260px; }
+  }
+</style>
+
+<div style="background:var(--black); padding:2.5rem 2rem 0;">
+  <div class="spotlight-wrap">
+
+    <!-- LEFT: Group photo -->
+    <div class="spotlight-panel" style="flex:1.15;">
+      <img src="images/staff_presentation_day.jpg"
+           alt="Career Shop DC × Dunbar — Learn &amp; Earn Showcase"
+           class="spotlight-photo" />
+      <div class="spotlight-caption">Career Shop DC &times; Dunbar &mdash; Learn &amp; Earn Showcase</div>
+    </div>
+
+    <!-- RIGHT: Mr. Jacobs video + quote -->
+    <div class="spotlight-panel spotlight-jacobs" style="flex:1;">
+      <video src="images/mrjacobs_speech.mp4"
+             poster="images/mrjacobs_speech_thumb.jpg"
+             preload="metadata" playsinline controls
+             style="width:100%; display:block; background:#000;"></video>
+      <div class="spotlight-quote-block">
+        <blockquote>&ldquo;one of the most enjoyable experiences that I&rsquo;ve had in all of my years teaching at DCPS&rdquo;</blockquote>
+        <cite>&mdash; Mr. Jacobs, Sports Management Academy &middot; Dunbar High School</cite>
+      </div>
+    </div>
+
   </div>
+  <div class="spotlight-divider"></div>
 </div>
 
 <!-- ABOUT -->
@@ -1644,33 +1758,18 @@
   </div>
 </section>
 
-<!-- EDUCATORS' PERSPECTIVES - TWO VIDEOS SIDE BY SIDE -->
+<!-- EDUCATORS' PERSPECTIVES - MS. BEARD CENTERED -->
 <div style="background:var(--black); padding:3rem 2rem; border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
-  <div style="max-width:1100px; margin:0 auto; text-align:center;">
+  <div style="max-width:560px; margin:0 auto; text-align:center;">
     <p style="font-size:0.78rem; font-weight:800; letter-spacing:0.2em; color:var(--gold); text-transform:uppercase; margin:0 0 0.3rem;">Educator Voices</p>
-    <h2 style="font-size:2rem; font-weight:900; color:#fff; margin:0 0 0.5rem;">Educators&rsquo; Perspectives</h2>
-    <p style="font-size:0.95rem; font-style:italic; color:#ccc; margin:0 0 0.4rem;">&ldquo;one of the most enjoyable experiences that I&rsquo;ve had in all of my years teaching at DCPS&rdquo;</p>
-    <p style="font-size:0.85rem; font-weight:700; color:var(--red); margin:0 0 2rem; text-align:right; max-width:700px; margin-left:auto; margin-right:auto;">&mdash; Mr. Jacobs</p>
-    <div style="display:flex; gap:2rem; justify-content:center; align-items:flex-start; flex-wrap:wrap;">
-      <!-- Educator Video 2 -->
-      <div class="participant-video-card" style="flex:1; min-width:260px; max-width:420px;">
-        <div class="pv-badge" style="background:var(--red-dark);">&#127916; Voices from the Classroom</div>
-        <div class="pv-video-wrap" style="aspect-ratio:200/352;">
-          <video src="images/educator_video2.mov" poster="images/educator_video2_thumb.jpg" preload="none" playsinline controls style="width:100%;height:100%;object-fit:cover;background:#000;"></video>
-        </div>
-        <div class="pv-info" style="text-align:center;">
-          <p>Educators discuss student development and the key elements that distinguished this program.</p>
-        </div>
+    <h2 style="font-size:2rem; font-weight:900; color:#fff; margin:0 0 1.75rem;">Educators&rsquo; Perspectives</h2>
+    <div class="participant-video-card" style="max-width:480px; margin:0 auto;">
+      <div class="pv-badge" style="background:var(--red-dark);">&#127916; Voices from the Classroom</div>
+      <div class="pv-video-wrap" style="aspect-ratio:200/352;">
+        <video src="images/educator_video2.mov" poster="images/educator_video2_thumb.jpg" preload="none" playsinline controls style="width:100%;height:100%;object-fit:cover;background:#000;"></video>
       </div>
-      <!-- Mr. Jacobs Video -->
-      <div class="participant-video-card" style="flex:1; min-width:260px; max-width:420px;">
-        <div class="pv-badge" style="background:var(--red);">&#127979; Mr. Jacobs &mdash; Sports Management</div>
-        <div class="pv-video-wrap" style="aspect-ratio:200/352;">
-          <video src="images/mrjacobs_speech.mp4" poster="images/mrjacobs_speech_thumb.jpg" preload="metadata" playsinline controls style="width:100%;height:100%;object-fit:contain;background:#000;"></video>
-        </div>
-        <div class="pv-info" style="text-align:center;">
-          <p>Mr. Jacobs shares his experience leading the Sports Management Academy at Dunbar High School.</p>
-        </div>
+      <div class="pv-info" style="text-align:center;">
+        <p>Educators discuss student development and the key elements that distinguished this program.</p>
       </div>
     </div>
   </div>
