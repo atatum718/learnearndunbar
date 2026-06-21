@@ -1454,167 +1454,211 @@
 
 <!-- PROGRAM HERO PHOTO + MR. JACOBS SPOTLIGHT FOCUS -->
 <style>
-  /* ===== PRESENTATION DAY SPOTLIGHT ===== */
-  .spotlight-wrap {
+  /* ===== PRESENTATION DAY SCRAPBOOK ===== */
+  .scrapbook-stage {
     display: flex;
-    gap: 3rem;
+    gap: 2.5rem;
     align-items: flex-start;
     justify-content: center;
-    max-width: 1060px;
+    max-width: 1080px;
     margin: 0 auto;
+    flex-wrap: wrap;
   }
 
-  /* Spotlight hover: dim non-hovered, brighten hovered */
-  .spotlight-wrap:hover .spotlight-item {
-    opacity: 0.42;
-    transform: scale(0.97);
+  /* Spotlight: dim siblings on hover */
+  .scrapbook-stage:hover .sb-item {
+    opacity: 0.38;
+    filter: brightness(0.7);
   }
-  .spotlight-wrap:hover .spotlight-item:hover {
+  .scrapbook-stage:hover .sb-item:hover {
     opacity: 1;
-    transform: scale(1.02);
-    z-index: 2;
+    filter: brightness(1);
+    z-index: 3;
   }
 
-  /* --- LEFT: Scrapbook photo frame --- */
-  .spotlight-item {
-    flex: 1 1 0;
-    min-width: 0;
-    transition: opacity 0.35s ease, transform 0.35s ease;
+  .sb-item {
+    transition: opacity 0.35s ease, filter 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
+    position: relative;
   }
-  .scrapbook-frame {
+
+  /* --- PIECE 1: Group photo polaroid --- */
+  .sb-photo {
+    flex: 1.25 1 0;
+    min-width: 260px;
+  }
+  .sb-photo-inner {
     background: #fff;
-    padding: 10px 10px 40px 10px;
-    border-radius: 3px;
-    box-shadow: 4px 6px 24px rgba(0,0,0,0.55), -2px -2px 8px rgba(0,0,0,0.2);
-    transform: rotate(-2.2deg);
+    padding: 10px 10px 44px;
+    border-radius: 2px;
+    box-shadow: 5px 7px 28px rgba(0,0,0,0.6), -2px -2px 8px rgba(0,0,0,0.18);
+    transform: rotate(-2.4deg);
     transition: transform 0.35s ease, box-shadow 0.35s ease;
     position: relative;
-    display: inline-block;
-    width: 100%;
-  }
-  .spotlight-item:hover .scrapbook-frame {
-    transform: rotate(0deg) scale(1.02);
-    box-shadow: 6px 10px 36px rgba(0,0,0,0.65);
-  }
-  .scrapbook-frame img {
     width: 100%;
     display: block;
-    border-radius: 1px;
+  }
+  .sb-photo:hover .sb-photo-inner {
+    transform: rotate(0deg) scale(1.025);
+    box-shadow: 8px 14px 40px rgba(0,0,0,0.7);
+  }
+  .sb-photo-inner img {
+    width: 100%; display: block;
+    aspect-ratio: 3/2;
     object-fit: cover;
     object-position: center center;
+    border-radius: 1px;
   }
-  .scrapbook-caption {
+  .sb-photo-caption {
     position: absolute;
-    bottom: 6px; left: 0; right: 0;
+    bottom: 7px; left: 0; right: 0;
     text-align: center;
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #555;
-    font-family: 'Segoe UI', sans-serif;
+    font-size: 0.68rem; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: #666;
   }
 
-  /* --- RIGHT: Video + quote card --- */
-  .spotlight-jacobs-card {
-    background: #111;
-    border-radius: 12px;
+  /* --- PIECE 2: Video card --- */
+  .sb-video {
+    flex: 0.9 1 0;
+    min-width: 220px;
+  }
+  .sb-video-inner {
+    background: #0e0e0e;
+    border-radius: 10px;
     overflow: hidden;
-    box-shadow: 4px 6px 24px rgba(0,0,0,0.5);
-    transform: rotate(1.2deg);
+    box-shadow: 5px 7px 28px rgba(0,0,0,0.55);
+    transform: rotate(1.6deg);
     transition: transform 0.35s ease, box-shadow 0.35s ease;
-    display: flex;
-    flex-direction: column;
   }
-  .spotlight-item:hover .spotlight-jacobs-card {
-    transform: rotate(0deg) scale(1.02);
-    box-shadow: 6px 10px 36px rgba(204,0,0,0.3);
+  .sb-video:hover .sb-video-inner {
+    transform: rotate(0deg) scale(1.025);
+    box-shadow: 8px 14px 40px rgba(204,0,0,0.35);
   }
-  .spotlight-video-ratio {
+  .sb-video-ratio {
     position: relative;
     width: 100%;
-    aspect-ratio: 4 / 5;
-    overflow: hidden;
+    aspect-ratio: 4/5;
     background: #000;
+    overflow: hidden;
   }
-  .spotlight-video-ratio video {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+  .sb-video-ratio video {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
   }
-  .spotlight-quote-block {
-    padding: 1.1rem 1.2rem 1rem;
-    border-left: 3px solid var(--red);
-    margin: 0.9rem 1rem 0.8rem;
-    background: rgba(204,0,0,0.06);
-    border-radius: 0 6px 6px 0;
+  .sb-video-label {
+    padding: 0.65rem 0.9rem 0.7rem;
+    font-size: 0.68rem; font-weight: 800;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--red); text-align: center;
   }
-  .spotlight-quote-block blockquote {
-    font-size: 0.9rem;
+
+  /* --- PIECE 3: Quote card --- */
+  .sb-quote {
+    flex: 0.85 1 0;
+    min-width: 200px;
+    align-self: center;
+  }
+  .sb-quote-inner {
+    background: #1a1a1a;
+    border: 1px solid rgba(204,0,0,0.25);
+    border-left: 4px solid var(--red);
+    border-radius: 8px;
+    padding: 1.4rem 1.3rem 1.2rem;
+    box-shadow: 4px 6px 22px rgba(0,0,0,0.5);
+    transform: rotate(-1.1deg);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+  }
+  .sb-quote:hover .sb-quote-inner {
+    transform: rotate(0deg) scale(1.025);
+    box-shadow: 6px 12px 36px rgba(204,0,0,0.3);
+  }
+  .sb-quote-inner blockquote {
+    font-size: 1rem;
     font-style: italic;
-    color: #e8e8e8;
-    line-height: 1.65;
-    margin: 0 0 0.5rem;
+    color: #ececec;
+    line-height: 1.7;
+    margin: 0 0 0.9rem;
+    quotes: none;
   }
-  .spotlight-quote-block cite {
-    font-size: 0.75rem;
+  .sb-quote-inner blockquote::before {
+    content: '\201C';
+    font-size: 2.8rem;
+    color: var(--red);
+    line-height: 0;
+    vertical-align: -0.55em;
+    margin-right: 0.15em;
+    font-style: normal;
+  }
+  .sb-quote-inner cite {
+    font-size: 0.76rem;
     font-style: normal;
     font-weight: 700;
     color: var(--red);
-    letter-spacing: 0.04em;
+    letter-spacing: 0.05em;
+    display: block;
+  }
+  .sb-quote-inner .cite-sub {
+    font-size: 0.7rem;
+    color: var(--gray);
+    font-weight: 500;
+    margin-top: 0.2rem;
+    display: block;
   }
 
   .spotlight-divider {
-    width: 60px;
-    height: 3px;
-    background: var(--red);
-    border-radius: 2px;
+    width: 60px; height: 3px;
+    background: var(--red); border-radius: 2px;
     margin: 2.5rem auto 0;
   }
 
-  @media (max-width: 700px) {
-    .spotlight-wrap { flex-direction: column; gap: 2rem; }
-    .scrapbook-frame { transform: rotate(-1.5deg); }
-    .spotlight-jacobs-card { transform: rotate(0.8deg); }
+  @media (max-width: 760px) {
+    .scrapbook-stage { flex-direction: column; align-items: center; }
+    .sb-photo, .sb-video, .sb-quote { width: 100%; max-width: 420px; }
+    .sb-photo-inner { transform: rotate(-1.5deg); }
+    .sb-video-inner { transform: rotate(1deg); }
+    .sb-quote-inner { transform: rotate(-0.7deg); }
   }
 </style>
 
 <div style="background:var(--black); padding:2.5rem 2rem 0;">
 
   <!-- Shared header -->
-  <div style="max-width:1060px; margin:0 auto 2rem; text-align:center;">
+  <div style="max-width:1080px; margin:0 auto 2.25rem; text-align:center;">
     <p style="font-size:0.72rem; font-weight:800; letter-spacing:0.22em; text-transform:uppercase; color:var(--red); margin:0 0 0.4rem;">Capstone Showcase &mdash; Spring 2026</p>
     <h2 style="font-size:1.85rem; font-weight:900; color:#fff; margin:0 0 0.5rem; line-height:1.15;">Presentation Day</h2>
     <p style="font-size:0.9rem; color:var(--gray); max-width:560px; margin:0 auto; line-height:1.6;">The moment students stepped into the room as professionals &mdash; presenting their work, earning their stipends, and hearing from the educators who watched them grow.</p>
   </div>
 
-  <div class="spotlight-wrap">
+  <div class="scrapbook-stage">
 
-    <!-- LEFT: Group photo in scrapbook frame -->
-    <div class="spotlight-item" style="flex:1.2;">
-      <div class="scrapbook-frame">
+    <!-- PIECE 1: Group photo polaroid -->
+    <div class="sb-item sb-photo">
+      <div class="sb-photo-inner">
         <img src="images/staff_presentation_day.jpg"
-             alt="Career Shop DC × Dunbar — Learn &amp; Earn Showcase"
-             style="aspect-ratio:3/2;" />
-        <div class="scrapbook-caption">Career Shop DC &times; Dunbar &mdash; Learn &amp; Earn Showcase</div>
+             alt="Career Shop DC × Dunbar — Learn &amp; Earn Showcase" />
+        <div class="sb-photo-caption">Career Shop DC &times; Dunbar &mdash; Learn &amp; Earn Showcase</div>
       </div>
     </div>
 
-    <!-- RIGHT: Mr. Jacobs video (4:5) + quote -->
-    <div class="spotlight-item" style="flex:1;">
-      <div class="spotlight-jacobs-card">
-        <div class="spotlight-video-ratio">
+    <!-- PIECE 2: Mr. Jacobs video card -->
+    <div class="sb-item sb-video">
+      <div class="sb-video-inner">
+        <div class="sb-video-ratio">
           <video src="images/mrjacobs_speech.mp4"
                  poster="images/mrjacobs_speech_thumb.jpg"
                  preload="metadata" playsinline controls></video>
         </div>
-        <div class="spotlight-quote-block">
-          <blockquote>&ldquo;one of the most enjoyable experiences that I&rsquo;ve had in all of my years teaching at DCPS&rdquo;</blockquote>
-          <cite>&mdash; Mr. Jacobs, Sports Management Academy &middot; Dunbar High School</cite>
-        </div>
+        <div class="sb-video-label">&#127979; Mr. Jacobs &mdash; Sports Management</div>
+      </div>
+    </div>
+
+    <!-- PIECE 3: Quote card -->
+    <div class="sb-item sb-quote">
+      <div class="sb-quote-inner">
+        <blockquote>one of the most enjoyable experiences that I&rsquo;ve had in all of my years teaching at DCPS</blockquote>
+        <cite>&mdash; Mr. Jacobs</cite>
+        <span class="cite-sub">Sports Management Academy &middot; Dunbar High School</span>
       </div>
     </div>
 
