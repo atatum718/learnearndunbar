@@ -2280,43 +2280,48 @@
               </div>
             </div>
 
-            <!-- Sketch + 3D render side by side -->
-            <div class="showcase-group" style="margin-top:0;">
+            <!-- 3-column grid: sketch | 3D render | video -->
+            <div style="margin-top:0;">
               <div class="showcase-group-title">Engineering Track — Park Space Design</div>
               <div class="showcase-group-sub">Hand-drawn sketch transformed into a 3D render using <span>ChatGPT</span>, then animated into a video using <span>Seed Dance</span></div>
-              <div style="display:flex; gap:0.75rem; align-items:stretch; margin-top:0.75rem;">
+              <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.75rem; margin-top:0.75rem;">
 
-                <div class="step-card step-card-large" onclick="openLightbox('images/sketch_park.jpeg', 'Step 1 — Student hand-drawn park space design sketch')" style="flex:1 1 0;">
+                <!-- Col 1: Hand-drawn sketch -->
+                <div class="step-card step-card-large" onclick="openLightbox('images/sketch_park.jpeg', 'Step 1 — Student hand-drawn park space design sketch')" style="cursor:pointer;">
                   <span class="step-tool-badge">Hand Drawn</span>
                   <div style="width:100%; aspect-ratio:4/3; overflow:hidden; border-radius:6px;">
-                    <img src="images/sketch_park.jpeg" alt="Student hand-drawn park design sketch" loading="lazy" style="width:100%; height:100%; object-fit:contain; background:#111; display:block;" />
+                    <img src="images/sketch_park.jpeg" alt="Student hand-drawn park design sketch" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;" />
                   </div>
                   <div class="step-card-label"><span class="step-num">1</span> Hand-Drawn Sketch</div>
                 </div>
 
-                <div style="display:flex; align-items:center; color:var(--red); font-size:1.2rem;">&#8594;</div>
-
-                <div class="step-card step-card-large" onclick="openLightbox('images/park_3d_render.png', 'Step 2 — AI-generated 3D render using ChatGPT')" style="flex:1 1 0;">
+                <!-- Col 2: 3D render -->
+                <div class="step-card step-card-large" onclick="openLightbox('images/park_3d_render.png', 'Step 2 — AI-generated 3D render using ChatGPT')" style="cursor:pointer;">
                   <span class="step-tool-badge">ChatGPT</span>
                   <div style="width:100%; aspect-ratio:4/3; overflow:hidden; border-radius:6px;">
-                    <img src="images/park_3d_render.png" alt="3D render of park design" loading="lazy" style="width:100%; height:100%; object-fit:contain; background:#111; display:block;" />
+                    <img src="images/park_3d_render.png" alt="3D render of park design" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;" />
                   </div>
                   <div class="step-card-label"><span class="step-num">2</span> 3D Render — ChatGPT</div>
                 </div>
 
-              </div>
-            </div>
-
-            <!-- Seed Dance video filling the remaining space -->
-            <div class="step-card step-card-large" id="video-card" style="flex:1;">
-              <span class="step-tool-badge">Seed Dance</span>
-              <div style="width:100%; aspect-ratio:16/9; overflow:hidden; border-radius:6px; position:relative; background:#111;">
-                <video id="park-video" src="images/park_animation.mp4" poster="images/park_animation_thumb.jpg" style="width:100%; height:100%; object-fit:cover; display:block;" muted loop playsinline preload="auto"></video>
-                <div class="video-play-hint" id="video-hint" style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center;">
-                  <div class="play-icon" onclick="toggleVideo()">&#9654;</div>
+                <!-- Col 3: Seed Dance video with 3D render as thumbnail + red play button -->
+                <div class="step-card step-card-large" id="video-card">
+                  <span class="step-tool-badge">Seed Dance</span>
+                  <div style="width:100%; aspect-ratio:4/3; overflow:hidden; border-radius:6px; position:relative; cursor:pointer;" onclick="toggleVideo()">
+                    <!-- 3D render as poster background -->
+                    <img id="video-thumb" src="images/park_3d_render.png" alt="Video thumbnail" style="width:100%; height:100%; object-fit:cover; display:block; position:absolute; inset:0;" />
+                    <video id="park-video" src="images/park_animation.mp4" style="width:100%; height:100%; object-fit:cover; display:none; position:absolute; inset:0;" muted loop playsinline preload="auto"></video>
+                    <!-- Red circular play button -->
+                    <div id="video-hint" style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; pointer-events:none;">
+                      <div style="width:56px; height:56px; border-radius:50%; background:var(--red); display:flex; align-items:center; justify-content:center; box-shadow:0 2px 12px rgba(0,0,0,0.5);">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><polygon points="6,3 20,12 6,21"/></svg>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="step-card-label"><span class="step-num">3</span> Animated Video — Seed Dance</div>
                 </div>
+
               </div>
-              <div class="step-card-label"><span class="step-num">3</span> Animated Video — Seed Dance</div>
             </div>
 
           </div>
@@ -2791,12 +2796,18 @@
   function toggleVideo() {
     const vid = document.getElementById('park-video');
     const hint = document.getElementById('video-hint');
-    if (vid.paused) {
+    const thumb = document.getElementById('video-thumb');
+    if (vid.style.display === 'none') {
+      // Show video, hide thumbnail
+      thumb.style.display = 'none';
+      vid.style.display = 'block';
       vid.play();
-      hint.style.opacity = '0';
+      hint.style.display = 'none';
     } else {
       vid.pause();
-      hint.style.opacity = '1';
+      vid.style.display = 'none';
+      thumb.style.display = 'block';
+      hint.style.display = 'flex';
     }
   }
   // Also allow clicking the video card area (not the label) to toggle
