@@ -1222,6 +1222,16 @@
     .vfh-bubble.white-red::after  { border-top: 9px solid #B22222; }
     .vfh-bubble.white-gold  { background: #fff; color: #1a1a2e; border: 2px solid #F5A623; }
     .vfh-bubble.white-gold::after { border-top: 9px solid #F5A623; }
+    /* Playing state — pulsing ring */
+    .vfh-bubble.vfh-playing {
+      outline: 3px solid #B22222;
+      outline-offset: 3px;
+      animation: vfh-pulse 0.8s ease-in-out infinite alternate;
+    }
+    @keyframes vfh-pulse {
+      from { outline-color: #B22222; }
+      to   { outline-color: #F5A623; }
+    }
 
     /* ===== SUCCESS FOCAL POINTS ===== */
     .success-stats {
@@ -1547,84 +1557,84 @@
     <p style="font-size:0.8rem; font-weight:800; letter-spacing:0.2em; color:#B22222; text-transform:uppercase; margin:0 0 0.4rem;">33 Student Voices. One Powerful Impact.</p>
     <h2 style="font-size:2.2rem; font-weight:900; color:#1a1a2e; margin:0 0 0.2rem; font-family:inherit;">Voices <em style="font-family:Georgia,serif; color:#B22222;">from the</em> Heart</h2>
     <p style="font-size:1rem; font-weight:700; color:#1a1a2e; margin:0 0 0.3rem;">of Learn &amp; Earn &mdash; Student Voices Lifting Us Up! &#9825;</p>
-    <p style="font-size:0.78rem; color:#888; font-style:italic; margin:0 0 2.5rem;">Click any bubble to hear it read aloud &mdash; audio coming soon</p>
+    <p style="font-size:0.78rem; color:#888; font-style:italic; margin:0 0 2.5rem;">&#9654; Click any bubble to hear a student voice read it aloud</p>
 
     <!-- Bubbles arranged in heart shape rows - no container clip -->
     <div class="vfh-heart-wrap">
 
       <!-- Row 1: 2 bubbles (top left lobe) -->
       <div class="vfh-row" style="--row-w:340px;">
-        <div class="vfh-bubble red"><span>Save my money.</span></div>
-        <div class="vfh-bubble gold"><span>It helped me get better at saving my money.</span></div>
+        <div class="vfh-bubble red" data-audio="audio/money-saving-tips.mp3"><span>Save my money.</span></div>
+        <div class="vfh-bubble gold" data-audio="audio/savings-success-story.mp3"><span>It helped me get better at saving my money.</span></div>
       </div>
 
       <!-- Row 2: 4 bubbles -->
       <div class="vfh-row" style="--row-w:600px;">
-        <div class="vfh-bubble white-red"><span>It allowed me to save up.</span></div>
-        <div class="vfh-bubble gold"><span>It helped me provide for myself independently.</span></div>
-        <div class="vfh-bubble red"><span>It helped me put more money toward college.</span></div>
-        <div class="vfh-bubble white-gold"><span>I&rsquo;ve been able to budget better.</span></div>
+        <div class="vfh-bubble white-red" data-audio="audio/financial-goals-achieved.mp3"><span>It allowed me to save up.</span></div>
+        <div class="vfh-bubble gold" data-audio="audio/independent-living-support.mp3"><span>It helped me provide for myself independently.</span></div>
+        <div class="vfh-bubble red" data-audio="audio/college-funding-help.mp3"><span>It helped me put more money toward college.</span></div>
+        <div class="vfh-bubble white-gold" data-audio="audio/better-budgeting-tips.mp3"><span>I&rsquo;ve been able to budget better.</span></div>
       </div>
 
       <!-- Row 3: 5 bubbles -->
       <div class="vfh-row" style="--row-w:780px;">
-        <div class="vfh-bubble red"><span>I was able to pay for my end-of-year trip and school supplies.</span></div>
-        <div class="vfh-bubble white-gold"><span>I was able to pay for many senior activities on my own.</span></div>
-        <div class="vfh-bubble gold"><span>I am saving for college.</span></div>
-        <div class="vfh-bubble red"><span>Help with household bills.</span></div>
-        <div class="vfh-bubble white-red"><span>I was able to get food for me and my family.</span></div>
+        <div class="vfh-bubble red" data-audio="audio/end-of-year-trip-funding.mp3"><span>I was able to pay for my end-of-year trip and school supplies.</span></div>
+        <div class="vfh-bubble white-gold" data-audio="audio/senior-activities-funding.mp3"><span>I was able to pay for many senior activities on my own.</span></div>
+        <div class="vfh-bubble gold" data-audio="audio/college-savings-plan.mp3"><span>I am saving for college.</span></div>
+        <div class="vfh-bubble red" data-audio="audio/household-bills-help.mp3"><span>Help with household bills.</span></div>
+        <div class="vfh-bubble white-red" data-audio="audio/family-food-sharing.mp3"><span>I was able to get food for me and my family.</span></div>
       </div>
 
       <!-- Row 4: 5 bubbles (widest) -->
       <div class="vfh-row" style="--row-w:900px;">
-        <div class="vfh-bubble gold"><span>The extra earnings helped me pay for personal expenses and learn how to manage my finances.</span></div>
-        <div class="vfh-bubble red"><span>The money I earned helped me push my snack business and save.</span></div>
-        <div class="vfh-bubble white-red"><span>It allowed me to give money to my mom.</span></div>
-        <div class="vfh-bubble gold"><span>Pay for my phone bill.</span></div>
-        <div class="vfh-bubble red"><span>It allowed me to provide for my family.</span></div>
+        <div class="vfh-bubble gold" data-audio="audio/money-management-skills.mp3"><span>The extra earnings helped me pay for personal expenses and learn how to manage my finances.</span></div>
+        <div class="vfh-bubble red" data-audio="audio/snack-business-success.mp3"><span>The money I earned helped me push my snack business and save.</span></div>
+        <div class="vfh-bubble white-red" data-audio="audio/money-for-mom.mp3"><span>It allowed me to give money to my mom.</span></div>
+        <div class="vfh-bubble gold" data-audio="audio/phone-bill-payment.mp3"><span>Pay for my phone bill.</span></div>
+        <div class="vfh-bubble red" data-audio="audio/family-support-audio.mp3"><span>It allowed me to provide for my family.</span></div>
       </div>
 
       <!-- Row 5: 5 bubbles -->
       <div class="vfh-row" style="--row-w:900px;">
-        <div class="vfh-bubble white-gold"><span>It allowed me to buy the things I want and need, go out, and gain independence.</span></div>
-        <div class="vfh-bubble red"><span>It allowed me to treat my mom.</span></div>
-        <div class="vfh-bubble gold"><span>The money allowed me to save up for important things.</span></div>
-        <div class="vfh-bubble white-red"><span>It allowed me to work on my money management early.</span></div>
-        <div class="vfh-bubble red"><span>The earnings allowed me to invest.</span></div>
+        <div class="vfh-bubble white-gold" data-audio="audio/independence-through-purcha.mp3"><span>It allowed me to buy the things I want and need, go out, and gain independence.</span></div>
+        <div class="vfh-bubble red" data-audio="audio/treating-my-mom.mp3"><span>It allowed me to treat my mom.</span></div>
+        <div class="vfh-bubble gold" data-audio="audio/personal-finance-management.mp3"><span>The money allowed me to save up for important things.</span></div>
+        <div class="vfh-bubble white-red" data-audio="audio/budgeting-techniques.mp3"><span>It allowed me to work on my money management early.</span></div>
+        <div class="vfh-bubble red" data-audio="audio/investment-earnings.mp3"><span>The earnings allowed me to invest.</span></div>
       </div>
 
       <!-- Row 6: 4 bubbles -->
       <div class="vfh-row" style="--row-w:740px;">
-        <div class="vfh-bubble gold"><span>It allowed me to have a little bit more independence.</span></div>
-        <div class="vfh-bubble white-red"><span>It helped me plan a more exciting summer.</span></div>
-        <div class="vfh-bubble red"><span>&ldquo;Thank you for this opportunity.&rdquo;</span></div>
-        <div class="vfh-bubble gold"><span>&ldquo;Thank you for everything.&rdquo;</span></div>
+        <div class="vfh-bubble gold" data-audio="audio/independence-boost.mp3"><span>It allowed me to have a little bit more independence.</span></div>
+        <div class="vfh-bubble white-red" data-audio="audio/exciting-summer-plans.mp3"><span>It helped me plan a more exciting summer.</span></div>
+        <div class="vfh-bubble red" data-audio="audio/thank-you-opportunity.mp3"><span>&ldquo;Thank you for this opportunity.&rdquo;</span></div>
+        <div class="vfh-bubble gold" data-audio="audio/gratitude-audio.mp3"><span>&ldquo;Thank you for everything.&rdquo;</span></div>
       </div>
 
       <!-- Row 7: 4 bubbles -->
       <div class="vfh-row" style="--row-w:680px;">
-        <div class="vfh-bubble white-gold"><span>&ldquo;Thank you for the learning I&rsquo;ve done in this class!&rdquo;</span></div>
-        <div class="vfh-bubble red"><span>&ldquo;I would like to say thank you for giving me the opportunity.&rdquo;</span></div>
-        <div class="vfh-bubble gold"><span>&ldquo;Thank you to the entire community. I am very grateful.&rdquo;</span></div>
-        <div class="vfh-bubble white-red"><span>&ldquo;Thank you very much.&rdquo;</span></div>
+        <div class="vfh-bubble white-gold" data-audio="audio/learning-appreciation.mp3"><span>&ldquo;Thank you for the learning I&rsquo;ve done in this class!&rdquo;</span></div>
+        <div class="vfh-bubble red" data-audio="audio/grateful-for-chance.mp3"><span>&ldquo;I would like to say thank you for giving me the opportunity.&rdquo;</span></div>
+        <div class="vfh-bubble gold" data-audio="audio/community-thank-you.mp3"><span>&ldquo;Thank you to the entire community. I am very grateful.&rdquo;</span></div>
+        <div class="vfh-bubble white-red" data-audio="audio/thank-you-audio.mp3"><span>&ldquo;Thank you very much.&rdquo;</span></div>
       </div>
 
       <!-- Row 8: 3 bubbles -->
       <div class="vfh-row" style="--row-w:520px;">
-        <div class="vfh-bubble red"><span>&ldquo;Thank you and I want to participate next year.&rdquo;</span></div>
-        <div class="vfh-bubble gold"><span>&ldquo;Do other schools in DC have this program?&rdquo;</span></div>
-        <div class="vfh-bubble white-red"><span>&ldquo;Ms. Tatum was great and super supportive. I would love to share this with other students.&rdquo;</span></div>
+        <div class="vfh-bubble red" data-audio="audio/participate-next-year.mp3"><span>&ldquo;Thank you and I want to participate next year.&rdquo;</span></div>
+        <div class="vfh-bubble gold" data-audio="audio/dc-schools-programs.mp3"><span>&ldquo;Do other schools in DC have this program?&rdquo;</span></div>
+        <div class="vfh-bubble white-red" data-audio="audio/ms-tatum-supportive-experie.mp3"><span>&ldquo;Ms. Tatum was great and super supportive. I would love to share this with other students.&rdquo;</span></div>
       </div>
 
       <!-- Row 9: 2 bubbles -->
       <div class="vfh-row" style="--row-w:360px;">
-        <div class="vfh-bubble red"><span>&ldquo;Thank you for teaching me how to be a sports manager and to present my business.&rdquo;</span></div>
-        <div class="vfh-bubble gold"><span>&ldquo;Thank you and I want to participate next year.&rdquo;</span></div>
+        <div class="vfh-bubble red" data-audio="audio/sports-manager-training.mp3"><span>&ldquo;Thank you for teaching me how to be a sports manager and to present my business.&rdquo;</span></div>
+        <div class="vfh-bubble gold" data-audio="audio/participate-next-year.mp3"><span>&ldquo;Thank you and I want to participate next year.&rdquo;</span></div>
       </div>
 
       <!-- Row 10: 1 bubble (tip) -->
       <div class="vfh-row" style="--row-w:200px;">
-        <div class="vfh-bubble white-gold"><span>&ldquo;Thank you for everything.&rdquo;</span></div>
+        <div class="vfh-bubble white-gold" data-audio="audio/gratitude-audio.mp3"><span>&ldquo;Thank you for everything.&rdquo;</span></div>
       </div>
 
     </div><!-- /.vfh-heart-wrap -->
@@ -3150,6 +3160,51 @@
     const panel = document.getElementById('people-' + id);
     if (panel) panel.classList.add('active');
   }
+</script>
+
+<script>
+  // ===== VOICE BUBBLE AUDIO PLAYER =====
+  (function() {
+    var currentAudio = null;
+
+    document.querySelectorAll('.vfh-bubble[data-audio]').forEach(function(bubble) {
+      bubble.addEventListener('click', function() {
+        var src = this.getAttribute('data-audio');
+        if (!src) return;
+
+        // Stop any currently playing audio
+        if (currentAudio) {
+          currentAudio.pause();
+          currentAudio.currentTime = 0;
+          // Remove playing state from all bubbles
+          document.querySelectorAll('.vfh-bubble').forEach(function(b) {
+            b.classList.remove('vfh-playing');
+          });
+          // If clicking the same bubble that was playing, just stop
+          if (currentAudio._src === src) {
+            currentAudio = null;
+            return;
+          }
+        }
+
+        // Play the new audio
+        var audio = new Audio(src);
+        audio._src = src;
+        currentAudio = audio;
+        this.classList.add('vfh-playing');
+        var self = this;
+
+        audio.play().catch(function() {
+          // Autoplay blocked — silently ignore
+        });
+
+        audio.addEventListener('ended', function() {
+          self.classList.remove('vfh-playing');
+          currentAudio = null;
+        });
+      });
+    });
+  })();
 </script>
 </body>
 </html>
