@@ -492,6 +492,16 @@
     .step-card-large img, .step-card-large video {
       height: 480px !important;
     }
+    @media (max-width: 700px) {
+      .step-card-large img, .step-card-large video {
+        height: 260px !important;
+      }
+      .step-card video { height: 160px; }
+      .logo-pair .step-card img { height: 200px; }
+      .step-flow { flex-direction: column; }
+      .step-arrow { transform: rotate(90deg); padding: 0.25rem 0; align-self: center; }
+      .logo-pair { grid-template-columns: 1fr; }
+    }
     .step-card:hover img { transform: scale(1.05); }
     .step-card-label {
       padding: 0.75rem 1rem;
@@ -774,6 +784,10 @@
     }
     @media (max-width: 768px) {
       .edu-videos-grid { grid-template-columns: 1fr; }
+      /* Cap portrait video height on mobile so it doesn't take full screen */
+      .edu-videos-grid [style*="aspect-ratio:9/16"] {
+        max-height: 60vw !important;
+      }
     }
     /* Staff / Educator cards */
     .people-cards-grid {
@@ -823,6 +837,14 @@
       display: grid; grid-template-columns: 1fr 1fr;
       gap: 2rem; margin-bottom: 2.5rem;
     }
+    /* Cap portrait video height on larger screens so controls stay visible */
+    .participants-videos .pv-video-wrap[style*="aspect-ratio"] {
+      max-height: 520px;
+      overflow: hidden;
+    }
+    .participants-videos .pv-video-wrap[style*="aspect-ratio"] video {
+      max-height: 520px;
+    }
     .participant-video-card {
       background: rgba(255,255,255,0.03); border: 1px solid var(--border);
       border-radius: 12px; overflow: hidden;
@@ -836,10 +858,19 @@
     }
     .pv-video-wrap {
       background: #000; width: 100%; overflow: hidden;
+      position: relative;
+    }
+    /* When aspect-ratio is set inline, enforce it properly */
+    .pv-video-wrap[style*="aspect-ratio"] {
+      display: block;
     }
     .pv-video-wrap video {
       width: 100%; height: auto; display: block;
       object-fit: contain; max-height: 560px;
+    }
+    /* Portrait videos inside aspect-ratio wrapper fill the box */
+    .pv-video-wrap[style*="aspect-ratio"] video {
+      width: 100%; height: 100%; object-fit: cover; max-height: none;
     }
     .pv-info {
       padding: 1.25rem 1.5rem;
@@ -1613,10 +1644,12 @@
 
   @media (max-width: 760px) {
     .scrapbook-stage { flex-direction: column; align-items: center; }
-    .sb-left-col, .sb-video { width: 100%; max-width: 440px; }
+    .sb-left-col, .sb-video { width: 100%; max-width: 480px; flex: none; }
     .sb-photo-inner { transform: rotate(-2deg); }
     .sb-video-inner { transform: rotate(1.5deg); }
     .sb-quote-inner { transform: rotate(1.2deg); }
+    /* Ensure video controls are reachable on mobile */
+    .sb-video-ratio video { object-fit: contain; background: #000; }
   }
 </style>
 
@@ -1861,8 +1894,8 @@
     <h2 style="font-size:2rem; font-weight:900; color:#fff; margin:0 0 1.75rem;">Educators&rsquo; Perspectives</h2>
     <div class="participant-video-card" style="max-width:480px; margin:0 auto;">
       <div class="pv-badge" style="background:var(--red-dark);">&#127916; Voices from the Classroom</div>
-      <div class="pv-video-wrap" style="aspect-ratio:200/352;">
-        <video src="images/educator_video2.mov" poster="images/educator_video2_thumb.jpg" preload="none" playsinline controls style="width:100%;height:100%;object-fit:cover;background:#000;"></video>
+      <div style="background:#000; width:100%; aspect-ratio:200/352; max-height:520px; overflow:hidden; position:relative;">
+        <video src="images/educator_video2.mov" poster="images/educator_video2_thumb.jpg" preload="none" playsinline controls style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#000;"></video>
       </div>
       <div class="pv-info" style="text-align:center;">
         <p>Educators discuss student development and the key elements that distinguished this program.</p>
@@ -2206,8 +2239,8 @@
             <div class="pv-info" style="margin-bottom:0.75rem;">
               <h4 style="margin:0;">Learning Reimagined</h4>
             </div>
-            <div class="pv-video-wrap" style="aspect-ratio:9/16; max-height:480px;">
-              <video src="images/educator_video1.mov" preload="metadata" playsinline controls style="width:100%;height:100%;object-fit:contain;background:#000;"></video>
+            <div style="background:#000; width:100%; aspect-ratio:9/16; max-height:480px; overflow:hidden; position:relative;">
+              <video src="images/educator_video1.mov" preload="metadata" playsinline controls style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000;"></video>
             </div>
             <div class="pv-info" style="margin-top:0.75rem;">
               <p>Discover how students grew and why this program made a lasting difference.</p>
