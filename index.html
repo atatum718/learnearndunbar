@@ -2345,39 +2345,39 @@
     <div class="reveal" style="display:flex; flex-wrap:wrap; gap:2rem; justify-content:center; align-items:flex-start; margin:2.5rem auto 3rem;">
 
       <!-- Chart 1: Would you recommend? -->
-      <div style="flex:1 1 280px; max-width:380px; text-align:center;">
-        <p style="font-size:1.1rem; font-weight:700; color:var(--white); margin-bottom:1rem; line-height:1.4;">Would you recommend people to this program?</p>
-        <p style="font-size:0.8rem; color:var(--gray); margin-bottom:0.75rem;">127 responses</p>
-        <canvas id="chartRecommend" width="300" height="300"></canvas>
-        <div id="legendRecommend" style="margin-top:0.75rem; text-align:left; display:inline-block;"></div>
-        <p style="margin-top:1rem; font-size:1rem; color:var(--gray); font-weight:600; line-height:1.4;">79.5% of students gave the highest rating of <strong style="color:var(--red);">5 out of 5</strong></p>
+      <div style="flex:1 1 280px; max-width:380px; text-align:center; display:flex; flex-direction:column; align-items:center;">
+        <p style="font-size:1.05rem; font-weight:700; color:var(--white); margin-bottom:0.5rem; line-height:1.4; min-height:3.5em; display:flex; align-items:center; justify-content:center;">Would you recommend people to this program?</p>
+        <p style="font-size:0.8rem; color:var(--gray); margin-bottom:0.5rem;">127 responses</p>
+        <canvas id="chartRecommend" width="280" height="280" style="max-width:280px;"></canvas>
+        <div id="legendRecommend" style="margin-top:0.75rem; text-align:left; display:inline-block; min-height:90px;"></div>
+        <p style="margin-top:0.75rem; font-size:0.95rem; color:var(--gray); font-weight:600; line-height:1.4;">79.5% of students gave the highest rating of <strong style="color:var(--red);">5 out of 5</strong></p>
       </div>
 
       <!-- Chart 2: Attendance -->
-      <div style="flex:1 1 280px; max-width:380px; text-align:center;">
-        <p style="font-size:1.1rem; font-weight:700; color:var(--white); margin-bottom:1rem; line-height:1.4;">Were there days when you came to school when you normally would not have?</p>
-        <p style="font-size:0.8rem; color:var(--gray); margin-bottom:0.75rem;">126 responses</p>
-        <canvas id="chartAttendance" width="300" height="300"></canvas>
-        <div id="legendAttendance" style="margin-top:0.75rem; text-align:left; display:inline-block;"></div>
-        <p style="margin-top:1rem; font-size:1rem; color:var(--gray); font-weight:600; line-height:1.4;"><strong style="color:var(--red);">84.1%</strong> said the program brought them to school on days they otherwise would have stayed home</p>
+      <div style="flex:1 1 280px; max-width:380px; text-align:center; display:flex; flex-direction:column; align-items:center;">
+        <p style="font-size:1.05rem; font-weight:700; color:var(--white); margin-bottom:0.5rem; line-height:1.4; min-height:3.5em; display:flex; align-items:center; justify-content:center;">Were there days when you came to school when you normally would not have?</p>
+        <p style="font-size:0.8rem; color:var(--gray); margin-bottom:0.5rem;">126 responses</p>
+        <canvas id="chartAttendance" width="280" height="280" style="max-width:280px;"></canvas>
+        <div id="legendAttendance" style="margin-top:0.75rem; text-align:left; display:inline-block; min-height:90px;"></div>
+        <p style="margin-top:0.75rem; font-size:0.95rem; color:var(--gray); font-weight:600; line-height:1.4;"><strong style="color:var(--red);">84.1%</strong> said the program brought them to school on days they otherwise would have stayed home</p>
       </div>
 
       <!-- Chart 3: Should continue -->
-      <div style="flex:1 1 280px; max-width:380px; text-align:center;">
-        <p style="font-size:1.1rem; font-weight:700; color:var(--white); margin-bottom:1rem; line-height:1.4;">Do you think the program should continue?</p>
-        <p style="font-size:0.8rem; color:var(--gray); margin-bottom:0.75rem;">126 responses</p>
-        <canvas id="chartContinue" width="300" height="300"></canvas>
-        <div id="legendContinue" style="margin-top:0.75rem; text-align:left; display:inline-block;"></div>
-        <p style="margin-top:1rem; font-size:1rem; color:var(--gray); font-weight:600; line-height:1.4;"><strong style="color:var(--red);">100%</strong> of students said the program should continue</p>
+      <div style="flex:1 1 280px; max-width:380px; text-align:center; display:flex; flex-direction:column; align-items:center;">
+        <p style="font-size:1.05rem; font-weight:700; color:var(--white); margin-bottom:0.5rem; line-height:1.4; min-height:3.5em; display:flex; align-items:center; justify-content:center;">Do you think the program should continue?</p>
+        <p style="font-size:0.8rem; color:var(--gray); margin-bottom:0.5rem;">126 responses</p>
+        <canvas id="chartContinue" width="280" height="280" style="max-width:280px;"></canvas>
+        <div id="legendContinue" style="margin-top:0.75rem; text-align:left; display:inline-block; min-height:90px;"></div>
+        <p style="margin-top:0.75rem; font-size:0.95rem; color:var(--gray); font-weight:600; line-height:1.4;"><strong style="color:var(--red);">100%</strong> of students said the program should continue</p>
       </div>
 
     </div>
 
     <script>
     (function() {
-      // Color palette: red, gold, white, crimson, steel-blue, silver
       var PIE_COLORS = ['#B22222','#F5A623','#FFFFFF','#8B0000','#4A90D9','#A0A0A0'];
       var LEGEND_TEXT = '#cccccc';
+      var EXPLODE_OFFSET = 14; // px to push slice out on hover
 
       function buildLegend(containerId, labels, data, colors) {
         var el = document.getElementById(containerId);
@@ -2388,7 +2388,7 @@
           var pct = total > 0 ? ((data[i]/total)*100).toFixed(1) : '0.0';
           html += '<div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;">';
           html += '<span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:'+colors[i]+';flex-shrink:0;"></span>';
-          html += '<span style="color:'+LEGEND_TEXT+';font-size:0.8rem;">'+lbl+' &nbsp;<span style="color:#888;">('+(data[i])+')</span>&nbsp; '+pct+'%</span>';
+          html += '<span style="color:'+LEGEND_TEXT+';font-size:0.8rem;">'+lbl+'&nbsp;<span style="color:#888;">('+data[i]+')</span>&nbsp;'+pct+'%</span>';
           html += '</div>';
         });
         el.innerHTML = html;
@@ -2397,7 +2397,9 @@
       function makeChart(id, labels, data, colors) {
         var ctx = document.getElementById(id);
         if (!ctx) return;
-        new Chart(ctx, {
+        // Build offset arrays — all zero initially, explode on hover
+        var baseOffsets = data.map(function(){ return 0; });
+        var chart = new Chart(ctx, {
           type: 'pie',
           data: {
             labels: labels,
@@ -2405,34 +2407,41 @@
               data: data,
               backgroundColor: colors,
               borderColor: '#1a1a1a',
-              borderWidth: 2
+              borderWidth: 2,
+              offset: baseOffsets.slice()
             }]
           },
           options: {
             responsive: true,
+            animation: {
+              animateRotate: true,
+              animateScale: true,
+              duration: 1200,
+              easing: 'easeInOutQuart'
+            },
             plugins: {
               legend: { display: false },
               tooltip: {
                 callbacks: {
-                  label: function(ctx) {
-                    var total = ctx.dataset.data.reduce(function(a,b){return a+b;},0);
-                    var pct = ((ctx.parsed/total)*100).toFixed(1);
-                    return ' '+ctx.label+': '+pct+'% ('+ctx.parsed+')';
+                  label: function(c) {
+                    var total = c.dataset.data.reduce(function(a,b){return a+b;},0);
+                    var pct = ((c.parsed/total)*100).toFixed(1);
+                    return ' '+c.label+': '+pct+'% ('+c.parsed+')';
                   }
                 }
-              },
-              datalabels: {
-                color: '#fff',
-                font: { weight: 'bold', size: 13 },
-                formatter: function(value, ctx) {
-                  var total = ctx.dataset.data.reduce(function(a,b){return a+b;},0);
-                  var pct = ((value/total)*100).toFixed(1);
-                  return pct > 2 ? pct+'%' : '';
-                }
               }
+            },
+            onHover: function(event, elements) {
+              var offsets = data.map(function(){ return 0; });
+              if (elements && elements.length > 0) {
+                offsets[elements[0].index] = EXPLODE_OFFSET;
+              }
+              chart.data.datasets[0].offset = offsets;
+              chart.update('none');
             }
           }
         });
+        return chart;
       }
 
       // Chart 1 — Recommend (1-5 scale)
