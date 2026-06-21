@@ -1462,13 +1462,12 @@
     justify-content: center;
     max-width: 1080px;
     margin: 0 auto;
-    flex-wrap: wrap;
   }
 
   /* Spotlight: dim siblings on hover */
   .scrapbook-stage:hover .sb-item {
     opacity: 0.38;
-    filter: brightness(0.7);
+    filter: brightness(0.65);
   }
   .scrapbook-stage:hover .sb-item:hover {
     opacity: 1;
@@ -1481,23 +1480,28 @@
     position: relative;
   }
 
-  /* --- PIECE 1: Group photo polaroid --- */
-  .sb-photo {
-    flex: 1.25 1 0;
-    min-width: 260px;
+  /* --- LEFT COLUMN: photo + quote stacked --- */
+  .sb-left-col {
+    flex: 1.2 1 0;
+    min-width: 280px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
   }
+
+  /* Photo polaroid */
   .sb-photo-inner {
     background: #fff;
     padding: 10px 10px 44px;
     border-radius: 2px;
     box-shadow: 5px 7px 28px rgba(0,0,0,0.6), -2px -2px 8px rgba(0,0,0,0.18);
-    transform: rotate(-2.4deg);
+    transform: rotate(-3.5deg);
     transition: transform 0.35s ease, box-shadow 0.35s ease;
     position: relative;
     width: 100%;
     display: block;
   }
-  .sb-photo:hover .sb-photo-inner {
+  .sb-item.sb-photo:hover .sb-photo-inner {
     transform: rotate(0deg) scale(1.025);
     box-shadow: 8px 14px 40px rgba(0,0,0,0.7);
   }
@@ -1517,48 +1521,7 @@
     color: #666;
   }
 
-  /* --- PIECE 2: Video card --- */
-  .sb-video {
-    flex: 0.9 1 0;
-    min-width: 220px;
-  }
-  .sb-video-inner {
-    background: #0e0e0e;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 5px 7px 28px rgba(0,0,0,0.55);
-    transform: rotate(1.6deg);
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
-  }
-  .sb-video:hover .sb-video-inner {
-    transform: rotate(0deg) scale(1.025);
-    box-shadow: 8px 14px 40px rgba(204,0,0,0.35);
-  }
-  .sb-video-ratio {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 4/5;
-    background: #000;
-    overflow: hidden;
-  }
-  .sb-video-ratio video {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
-    object-fit: cover; display: block;
-  }
-  .sb-video-label {
-    padding: 0.65rem 0.9rem 0.7rem;
-    font-size: 0.68rem; font-weight: 800;
-    letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--red); text-align: center;
-  }
-
-  /* --- PIECE 3: Quote card --- */
-  .sb-quote {
-    flex: 0.85 1 0;
-    min-width: 200px;
-    align-self: center;
-  }
+  /* Quote card */
   .sb-quote-inner {
     background: #1a1a1a;
     border: 1px solid rgba(204,0,0,0.25);
@@ -1566,10 +1529,10 @@
     border-radius: 8px;
     padding: 1.4rem 1.3rem 1.2rem;
     box-shadow: 4px 6px 22px rgba(0,0,0,0.5);
-    transform: rotate(-1.1deg);
+    transform: rotate(2.2deg);
     transition: transform 0.35s ease, box-shadow 0.35s ease;
   }
-  .sb-quote:hover .sb-quote-inner {
+  .sb-item.sb-quote:hover .sb-quote-inner {
     transform: rotate(0deg) scale(1.025);
     box-shadow: 6px 12px 36px rgba(204,0,0,0.3);
   }
@@ -1606,6 +1569,42 @@
     display: block;
   }
 
+  /* --- RIGHT COLUMN: video --- */
+  .sb-video {
+    flex: 1 1 0;
+    min-width: 260px;
+  }
+  .sb-video-inner {
+    background: #0e0e0e;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 5px 7px 28px rgba(0,0,0,0.55);
+    transform: rotate(2.8deg);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+  }
+  .sb-item.sb-video:hover .sb-video-inner {
+    transform: rotate(0deg) scale(1.025);
+    box-shadow: 8px 14px 40px rgba(204,0,0,0.35);
+  }
+  .sb-video-ratio {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4/5;
+    background: #000;
+    overflow: hidden;
+  }
+  .sb-video-ratio video {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+  }
+  .sb-video-label {
+    padding: 0.65rem 0.9rem 0.7rem;
+    font-size: 0.68rem; font-weight: 800;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--red); text-align: center;
+  }
+
   .spotlight-divider {
     width: 60px; height: 3px;
     background: var(--red); border-radius: 2px;
@@ -1614,10 +1613,10 @@
 
   @media (max-width: 760px) {
     .scrapbook-stage { flex-direction: column; align-items: center; }
-    .sb-photo, .sb-video, .sb-quote { width: 100%; max-width: 420px; }
-    .sb-photo-inner { transform: rotate(-1.5deg); }
-    .sb-video-inner { transform: rotate(1deg); }
-    .sb-quote-inner { transform: rotate(-0.7deg); }
+    .sb-left-col, .sb-video { width: 100%; max-width: 440px; }
+    .sb-photo-inner { transform: rotate(-2deg); }
+    .sb-video-inner { transform: rotate(1.5deg); }
+    .sb-quote-inner { transform: rotate(1.2deg); }
   }
 </style>
 
@@ -1632,16 +1631,30 @@
 
   <div class="scrapbook-stage">
 
-    <!-- PIECE 1: Group photo polaroid -->
-    <div class="sb-item sb-photo">
-      <div class="sb-photo-inner">
-        <img src="images/staff_presentation_day.jpg"
-             alt="Career Shop DC × Dunbar — Learn &amp; Earn Showcase" />
-        <div class="sb-photo-caption">Career Shop DC &times; Dunbar &mdash; Learn &amp; Earn Showcase</div>
+    <!-- LEFT COLUMN: photo polaroid + quote card -->
+    <div class="sb-left-col">
+
+      <!-- PIECE 1: Group photo polaroid -->
+      <div class="sb-item sb-photo">
+        <div class="sb-photo-inner">
+          <img src="images/staff_presentation_day.jpg"
+               alt="Career Shop DC × Dunbar — Learn &amp; Earn Showcase" />
+          <div class="sb-photo-caption">Career Shop DC &times; Dunbar &mdash; Learn &amp; Earn Showcase</div>
+        </div>
       </div>
+
+      <!-- PIECE 3: Quote card -->
+      <div class="sb-item sb-quote">
+        <div class="sb-quote-inner">
+          <blockquote>one of the most enjoyable experiences that I&rsquo;ve had in all of my years teaching at DCPS</blockquote>
+          <cite>&mdash; Mr. Jacobs</cite>
+          <span class="cite-sub">Sports Management Academy &middot; Dunbar High School</span>
+        </div>
+      </div>
+
     </div>
 
-    <!-- PIECE 2: Mr. Jacobs video card -->
+    <!-- RIGHT COLUMN: Mr. Jacobs video -->
     <div class="sb-item sb-video">
       <div class="sb-video-inner">
         <div class="sb-video-ratio">
@@ -1650,15 +1663,6 @@
                  preload="metadata" playsinline controls></video>
         </div>
         <div class="sb-video-label">&#127979; Mr. Jacobs &mdash; Sports Management</div>
-      </div>
-    </div>
-
-    <!-- PIECE 3: Quote card -->
-    <div class="sb-item sb-quote">
-      <div class="sb-quote-inner">
-        <blockquote>one of the most enjoyable experiences that I&rsquo;ve had in all of my years teaching at DCPS</blockquote>
-        <cite>&mdash; Mr. Jacobs</cite>
-        <span class="cite-sub">Sports Management Academy &middot; Dunbar High School</span>
       </div>
     </div>
 
