@@ -1439,7 +1439,7 @@
     </p>
     <div class="hero-meta">
       <div class="hero-meta-item">
-        <div class="num">45.3%</div>
+        <div class="num" data-count="45.3" data-suffix="%">45.3%</div>
         <div class="label">Students Increased<br/>Attendance</div>
       </div>
     </div>
@@ -1473,10 +1473,10 @@
       <div class="about-left">
         <p class="about-tagline">A <strong>Work-Based Learning Internship</strong> where DC youth earn <strong>$17.95/hr</strong> while building real career skills across four dynamic tracks.</p>
         <div class="about-stat-chips">
-          <div class="about-chip"><span class="chip-num">191+</span><span class="chip-label">Students Served</span></div>
+          <div class="about-chip"><span class="chip-num" data-count="191" data-suffix="+">191+</span><span class="chip-label">Students Served</span></div>
           <div class="about-chip"><span class="chip-num">$17.95</span><span class="chip-label">Per Hour Earned</span></div>
-          <div class="about-chip"><span class="chip-num">6</span><span class="chip-label">Weeks of Learning</span></div>
-          <div class="about-chip"><span class="chip-num">4</span><span class="chip-label">Career Tracks</span></div>
+          <div class="about-chip"><span class="chip-num" data-count="6">6</span><span class="chip-label">Weeks of Learning</span></div>
+          <div class="about-chip"><span class="chip-num" data-count="4">4</span><span class="chip-label">Career Tracks</span></div>
         </div>
         <p class="about-sub">Students were expected to demonstrate professionalism — arriving on time, communicating effectively, and delivering high-quality work as part of a real work-based learning experience.</p>
       </div>
@@ -2830,19 +2830,19 @@
     <div class="success-stats reveal">
       <div class="success-stat-card">
         <div class="success-stat-icon">&#127942;</div>
-        <div class="success-stat-num">+23 pts</div>
+        <div class="success-stat-num" data-count="23" data-prefix="+" data-suffix=" pts">+23 pts</div>
         <div class="success-stat-label">Top Improver</div>
         <div class="success-stat-sub">Brynden Smith (Gr. 10) — highest individual point gain in the program</div>
       </div>
       <div class="success-stat-card accent">
         <div class="success-stat-icon">&#128200;</div>
-        <div class="success-stat-num">15</div>
+        <div class="success-stat-num" data-count="15">15</div>
         <div class="success-stat-label">Students Crossed the Threshold</div>
         <div class="success-stat-sub">Students who moved from below 80% attendance up to ≥80% — the highest-leverage outcome of the program</div>
       </div>
       <div class="success-stat-card">
         <div class="success-stat-icon">&#128197;</div>
-        <div class="success-stat-num">−12</div>
+        <div class="success-stat-num" data-count="12" data-prefix="−">−12</div>
         <div class="success-stat-label">Fewer Chronically Absent</div>
         <div class="success-stat-sub">Net reduction: 79 → 67 chronically absent students (42.5% → 36.0% of enrollment)</div>
       </div>
@@ -2884,9 +2884,9 @@
       <h3 class="success-subhead"><span class="red-dot"></span> Chronic Absence — The Strongest Story</h3>
       <div class="absence-story-grid">
         <div class="absence-card">
-          <div class="absence-before">79</div>
+          <div class="absence-before" data-count="79">79</div>
           <div class="absence-arrow">→</div>
-          <div class="absence-after">67</div>
+          <div class="absence-after" data-count="67">67</div>
           <div class="absence-label">Chronically Absent Students</div>
           <div class="absence-pct">42.5% → 36.0% of enrollment</div>
         </div>
@@ -3224,29 +3224,55 @@
   }, { threshold: 0.3 });
   document.querySelectorAll('.progress-wrap').forEach(el => progressObserver.observe(el));
 
-  // ===== COUNT UP =====
-  function animateCount(el) {
-    const target = parseInt(el.dataset.target);
-    const duration = 1500;
-    const start = performance.now();
-    function update(now) {
-      const elapsed = now - start;
-      const progress = Math.min(elapsed / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      el.textContent = Math.round(eased * target);
-      if (progress < 1) requestAnimationFrame(update);
+  // ===== COUNT UP / COUNT DOWN (site-wide) =====
+  // Auto-tag .stat-num elements that contain a plain integer
+  document.querySelectorAll('.stat-num').forEach(function(el) {
+    var text = el.textContent.trim();
+    if (/^\d+$/.test(text) && !el.hasAttribute('data-count')) {
+      el.setAttribute('data-count', text);
     }
-    requestAnimationFrame(update);
+  });
+
+  var countedEls = new Set();
+
+  function animateCountEl(el) {
+    if (countedEls.has(el)) return;
+    countedEls.add(el);
+    var raw = el.getAttribute('data-count');
+    if (!raw) return;
+    var target = parseFloat(raw);
+    var prefix = el.getAttribute('data-prefix') || '';
+    var suffix = el.getAttribute('data-suffix') || '';
+    var isDecimal = raw.indexOf('.') !== -1;
+    var duration = 1800;
+    var startTime = null;
+    function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+    function step(ts) {
+      if (!startTime) startTime = ts;
+      var elapsed = ts - startTime;
+      var progress = Math.min(elapsed / duration, 1);
+      var value = target * easeOut(progress);
+      el.textContent = prefix + (isDecimal ? value.toFixed(1) : Math.round(value)) + suffix;
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        el.textContent = prefix + (isDecimal ? target.toFixed(1) : target) + suffix;
+      }
+    }
+    requestAnimationFrame(step);
   }
-  const countObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
+
+  var countObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
       if (entry.isIntersecting) {
-        entry.target.querySelectorAll('.count-up').forEach(animateCount);
-        countObserver.unobserve(entry.target);
+        animateCountEl(entry.target);
       }
     });
-  }, { threshold: 0.5 });
-  document.querySelectorAll('#hero').forEach(el => countObserver.observe(el));
+  }, { threshold: 0.3 });
+
+  document.querySelectorAll('[data-count]').forEach(function(el) {
+    countObserver.observe(el);
+  });
 
   // ===== TRACK TABS =====
   function switchTrack(id, btn) {
