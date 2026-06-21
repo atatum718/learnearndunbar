@@ -1801,7 +1801,44 @@
     <p style="font-size:0.8rem; font-weight:800; letter-spacing:0.2em; color:#B22222; text-transform:uppercase; margin:0 0 0.4rem;">33 Student Voices. One Powerful Impact.</p>
     <h2 style="font-size:2.2rem; font-weight:900; color:#1a1a2e; margin:0 0 0.2rem; font-family:inherit;">Voices <em style="font-family:Georgia,serif; color:#B22222;">from the</em> Heart</h2>
     <p style="font-size:1rem; font-weight:700; color:#1a1a2e; margin:0 0 0.3rem;">of Learn &amp; Earn &mdash; Student Voices Lifting Us Up! &#9825;</p>
-    <p style="font-size:0.78rem; color:#888; font-style:italic; margin:0 0 2.5rem;">&#9654; Click any bubble to hear a student voice read it aloud</p>
+    <style>
+      @keyframes vfh-pulse {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.7; transform: scale(1.04); }
+      }
+      @keyframes vfh-arrow-bounce {
+        0%, 100% { transform: translateX(0); }
+        50% { transform: translateX(5px); }
+      }
+      .vfh-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: rgba(204,0,0,0.12);
+        border: 1px solid rgba(204,0,0,0.4);
+        border-radius: 999px;
+        padding: 0.45rem 1.1rem 0.45rem 0.85rem;
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: #ff6b6b;
+        letter-spacing: 0.04em;
+        margin: 0 0 2.5rem;
+        animation: vfh-pulse 2.4s ease-in-out infinite;
+        cursor: default;
+      }
+      .vfh-cta-arrow {
+        display: inline-block;
+        font-size: 1rem;
+        color: var(--red);
+        animation: vfh-arrow-bounce 1.2s ease-in-out infinite;
+      }
+    </style>
+    <p style="margin:0 0 2.5rem; text-align:center;">
+      <span class="vfh-cta">
+        <span class="vfh-cta-arrow">&#9654;</span>
+        Click any bubble to hear a student voice read it aloud
+      </span>
+    </p>
 
     <!-- Bubbles arranged in heart shape rows - no container clip -->
     <div class="vfh-heart-wrap">
