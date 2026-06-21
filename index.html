@@ -1172,63 +1172,52 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 140px;
-      height: 160px;
+      width: 150px;
+      height: 140px;
       background: var(--bc);
-      border: 3px solid var(--brd);
-      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      clip-path: path('M75,130 C75,130 10,85 10,45 C10,20 30,5 55,15 C62,18 68,22 75,28 C82,22 88,18 95,15 C120,5 140,20 140,45 C140,85 75,130 75,130 Z');
       cursor: pointer;
-      transition: transform 0.25s cubic-bezier(.34,1.56,.64,1), box-shadow 0.25s;
+      transition: transform 0.25s cubic-bezier(.34,1.56,.64,1), filter 0.25s;
       animation: floatBalloon 3s ease-in-out infinite;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      filter: drop-shadow(0 6px 12px rgba(0,0,0,0.18));
       text-align: center;
-      padding: 1rem 0.75rem;
+      padding: 0.5rem 0.75rem 2rem;
     }
     .hrt-balloon:nth-child(odd)  { animation-delay: 0s; }
     .hrt-balloon:nth-child(even) { animation-delay: 1.5s; }
     .hrt-balloon:nth-child(3n)   { animation-delay: 0.8s; }
-    /* bottom point of heart */
-    .hrt-balloon::before {
-      content: '';
-      position: absolute;
-      bottom: -18px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 0;
-      height: 0;
-      border-left: 10px solid transparent;
-      border-right: 10px solid transparent;
-      border-top: 20px solid var(--bc);
-      filter: drop-shadow(0 3px 4px rgba(0,0,0,0.12));
-    }
     /* string */
     .hrt-balloon::after {
       content: '';
       position: absolute;
-      bottom: -46px;
+      bottom: -30px;
       left: 50%;
       transform: translateX(-50%);
       width: 2px;
       height: 28px;
-      background: rgba(0,0,0,0.25);
+      background: rgba(0,0,0,0.3);
       border-radius: 1px;
+      clip-path: none;
     }
     .hrt-balloon:hover {
-      transform: scale(1.12) translateY(-6px);
-      box-shadow: 0 14px 36px rgba(0,0,0,0.22);
+      transform: scale(1.12) translateY(-8px);
+      filter: drop-shadow(0 14px 24px rgba(0,0,0,0.28));
       animation-play-state: paused;
     }
     .hrt-balloon span {
-      font-size: 0.72rem;
+      font-size: 0.68rem;
       font-weight: 700;
       color: var(--tc);
       line-height: 1.35;
       display: block;
       pointer-events: none;
+      position: relative;
+      z-index: 1;
+      margin-top: -0.5rem;
     }
     @keyframes floatBalloon {
       0%, 100% { transform: translateY(0px); }
-      50%       { transform: translateY(-8px); }
+      50%       { transform: translateY(-10px); }
     }
 
     /* ===== SUCCESS FOCAL POINTS ===== */
@@ -1548,7 +1537,7 @@
 </section>
 
 <!-- VOICES FROM THE HEART - INTERACTIVE BALLOONS -->
-<section id="voices-heart" style="background:#fff; padding:3rem 1.5rem;">
+<section id="voices-heart" style="background:#fdf4f4; padding:3rem 1.5rem;">
   <div style="max-width:960px; margin:0 auto; text-align:center;">
     <div style="margin-bottom:2rem;">
       <p style="font-size:0.85rem; font-weight:800; letter-spacing:0.18em; color:#B22222; text-transform:uppercase; margin:0 0 0.4rem;">25 Student Voices. One Powerful Impact.</p>
