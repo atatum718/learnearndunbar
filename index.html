@@ -1163,61 +1163,111 @@
       margin: 3.5rem 0;
     }
 
-    /* ===== HEART BALLOONS ===== */
-    .hrt-balloon {
-      --bc: #B22222;
-      --tc: #fff;
-      --brd: transparent;
+    /* ===== HEART CONTAINER & BUBBLES ===== */
+    .heart-container {
       position: relative;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 150px;
-      height: 140px;
-      background: var(--bc);
-      clip-path: path('M75,130 C75,130 10,85 10,45 C10,20 30,5 55,15 C62,18 68,22 75,28 C82,22 88,18 95,15 C120,5 140,20 140,45 C140,85 75,130 75,130 Z');
-      cursor: pointer;
-      transition: transform 0.25s cubic-bezier(.34,1.56,.64,1), filter 0.25s;
-      animation: floatBalloon 3s ease-in-out infinite;
-      filter: drop-shadow(0 6px 12px rgba(0,0,0,0.18));
-      text-align: center;
-      padding: 0.5rem 0.75rem 2rem;
+      display: inline-block;
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      /* Heart shape via clip-path */
+      background: transparent;
     }
-    .hrt-balloon:nth-child(odd)  { animation-delay: 0s; }
-    .hrt-balloon:nth-child(even) { animation-delay: 1.5s; }
-    .hrt-balloon:nth-child(3n)   { animation-delay: 0.8s; }
-    /* string */
-    .hrt-balloon::after {
+    .heart-container::before {
       content: '';
       position: absolute;
-      bottom: -30px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 2px;
-      height: 28px;
-      background: rgba(0,0,0,0.3);
-      border-radius: 1px;
-      clip-path: none;
+      inset: 0;
+      background: #fff;
+      clip-path: path('M450,880 C450,880 20,560 20,260 C20,120 120,20 250,20 C330,20 400,65 450,120 C500,65 570,20 650,20 C780,20 880,120 880,260 C880,560 450,880 450,880 Z');
+      border: none;
+      z-index: 0;
     }
-    .hrt-balloon:hover {
-      transform: scale(1.12) translateY(-8px);
-      filter: drop-shadow(0 14px 24px rgba(0,0,0,0.28));
-      animation-play-state: paused;
-    }
-    .hrt-balloon span {
-      font-size: 0.68rem;
-      font-weight: 700;
-      color: var(--tc);
-      line-height: 1.35;
-      display: block;
+    /* Red outline heart */
+    .heart-container::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      background: transparent;
+      border: none;
+      z-index: 0;
       pointer-events: none;
+    }
+    .heart-inner {
       position: relative;
       z-index: 1;
-      margin-top: -0.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 3rem 2rem 5rem;
+      /* Clip content to heart shape */
+      clip-path: path('M450,880 C450,880 20,560 20,260 C20,120 120,20 250,20 C330,20 400,65 450,120 C500,65 570,20 650,20 C780,20 880,120 880,260 C880,560 450,880 450,880 Z');
+      background: #fff8f8;
+      min-height: 700px;
     }
+    .heart-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+    }
+    .heart-center-label {
+      text-align: center;
+      padding: 0.6rem 1.5rem;
+      border: 3px solid #B22222;
+      border-radius: 50%;
+      background: #fff;
+      min-width: 160px;
+      min-height: 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0.3rem auto;
+    }
+    .vfh-bubble {
+      border-radius: 18px;
+      padding: 0.55rem 0.9rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      line-height: 1.4;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.2s cubic-bezier(.34,1.56,.64,1), box-shadow 0.2s;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+      max-width: 160px;
+      min-width: 90px;
+      position: relative;
+    }
+    .vfh-bubble::after {
+      content: '\201D';
+      font-size: 0;
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0; height: 0;
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+    }
+    .vfh-bubble:hover {
+      transform: scale(1.1) translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+    .vfh-bubble span { pointer-events: none; }
+    /* Color variants */
+    .vfh-bubble.red        { background: #B22222; color: #fff; }
+    .vfh-bubble.red::after { border-top: 9px solid #B22222; }
+    .vfh-bubble.gold        { background: #F5A623; color: #fff; }
+    .vfh-bubble.gold::after { border-top: 9px solid #F5A623; }
+    .vfh-bubble.white-red  { background: #fff; color: #B22222; border: 2px solid #B22222; }
+    .vfh-bubble.white-red::after { border-top: 9px solid #B22222; }
+    .vfh-bubble.white-gold { background: #fff; color: #1a1a2e; border: 2px solid #F5A623; }
+    .vfh-bubble.white-gold::after { border-top: 9px solid #F5A623; }
     @keyframes floatBalloon {
       0%, 100% { transform: translateY(0px); }
-      50%       { transform: translateY(-10px); }
+      50%       { transform: translateY(-6px); }
     }
 
     /* ===== SUCCESS FOCAL POINTS ===== */
@@ -1536,43 +1586,101 @@
   </div>
 </section>
 
-<!-- VOICES FROM THE HEART - INTERACTIVE BALLOONS -->
-<section id="voices-heart" style="background:#fdf4f4; padding:3rem 1.5rem;">
-  <div style="max-width:960px; margin:0 auto; text-align:center;">
-    <div style="margin-bottom:2rem;">
-      <p style="font-size:0.85rem; font-weight:800; letter-spacing:0.18em; color:#B22222; text-transform:uppercase; margin:0 0 0.4rem;">25 Student Voices. One Powerful Impact.</p>
-      <h2 style="font-size:2rem; font-weight:900; color:#1a1a2e; margin:0 0 0.3rem;">Voices <em style="font-family:Georgia,serif; color:#B22222;">from the</em> Heart</h2>
-      <p style="font-size:1.1rem; font-weight:700; color:#1a1a2e; margin:0 0 0.5rem;">of Learn &amp; Earn</p>
-      <p style="font-size:0.82rem; color:#666; font-style:italic;">Click any balloon to hear it read aloud &mdash; audio coming soon</p>
-    </div>
-    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:1rem; align-items:flex-start;">
+<!-- VOICES FROM THE HEART + STUDENT VOICES - UNIFIED SECTION -->
+<section id="voices-heart" style="background:#fdf4f4; padding:3rem 1rem 4rem;">
+  <div style="max-width:1000px; margin:0 auto; text-align:center;">
 
-      <div class="hrt-balloon" style="--bc:#B22222;"><span>Save my money.</span></div>
-      <div class="hrt-balloon" style="--bc:#fff; --tc:#B22222; --brd:#B22222;"><span>It allowed me to save up.</span></div>
-      <div class="hrt-balloon" style="--bc:#F5A623;"><span>It helped me get better at saving my money.</span></div>
-      <div class="hrt-balloon" style="--bc:#B22222;"><span>It helped me provide for myself independently.</span></div>
-      <div class="hrt-balloon" style="--bc:#fff; --tc:#1a1a2e; --brd:#F5A623;"><span>I was able to pay for my end-of-year trip and school supplies.</span></div>
-      <div class="hrt-balloon" style="--bc:#F5A623;"><span>It helped me put more money toward college.</span></div>
-      <div class="hrt-balloon" style="--bc:#B22222;"><span>I was able to pay for many senior activities on my own.</span></div>
-      <div class="hrt-balloon" style="--bc:#fff; --tc:#B22222; --brd:#B22222;"><span>I was able to get food for me and my family.</span></div>
-      <div class="hrt-balloon" style="--bc:#F5A623;"><span>I've been able to budget better.</span></div>
-      <div class="hrt-balloon" style="--bc:#B22222;"><span>I am saving for college.</span></div>
-      <div class="hrt-balloon" style="--bc:#fff; --tc:#1a1a2e; --brd:#F5A623;"><span>Help with household bills.</span></div>
-      <div class="hrt-balloon" style="--bc:#F5A623;"><span>The extra earnings helped me pay for personal expenses and learn how to manage my finances.</span></div>
-      <div class="hrt-balloon" style="--bc:#B22222;"><span>The money I earned helped me push my snack business and save.</span></div>
-      <div class="hrt-balloon" style="--bc:#fff; --tc:#B22222; --brd:#B22222;"><span>It allowed me to give money to my mom.</span></div>
-      <div class="hrt-balloon" style="--bc:#F5A623;"><span>It allowed me to buy the things I want and need, go out, and gain independence.</span></div>
-      <div class="hrt-balloon" style="--bc:#B22222;"><span>Pay for my phone bill.</span></div>
-      <div class="hrt-balloon" style="--bc:#fff; --tc:#1a1a2e; --brd:#F5A623;"><span>It allowed me to provide for my family.</span></div>
-      <div class="hrt-balloon" style="--bc:#F5A623;"><span>It allowed me to treat my mom.</span></div>
-      <div class="hrt-balloon" style="--bc:#B22222;"><span>The money allowed me to save up for important things.</span></div>
-      <div class="hrt-balloon" style="--bc:#fff; --tc:#B22222; --brd:#B22222;"><span>It allowed me to work on my money management early.</span></div>
-      <div class="hrt-balloon" style="--bc:#F5A623;"><span>The earnings allowed me to invest.</span></div>
-      <div class="hrt-balloon" style="--bc:#B22222;"><span>It allowed me to have a little bit more independence.</span></div>
-      <div class="hrt-balloon" style="--bc:#fff; --tc:#1a1a2e; --brd:#F5A623;"><span>It helped me plan a more exciting summer.</span></div>
+    <!-- Header -->
+    <p style="font-size:0.8rem; font-weight:800; letter-spacing:0.2em; color:#B22222; text-transform:uppercase; margin:0 0 0.4rem;">33 Student Voices. One Powerful Impact.</p>
+    <h2 style="font-size:2.2rem; font-weight:900; color:#1a1a2e; margin:0 0 0.2rem; font-family:inherit;">Voices <em style="font-family:Georgia,serif; color:#B22222;">from the</em> Heart</h2>
+    <p style="font-size:1rem; font-weight:700; color:#1a1a2e; margin:0 0 0.3rem;">of Learn &amp; Earn &mdash; Student Voices Lifting Us Up! &#9825;</p>
+    <p style="font-size:0.78rem; color:#888; font-style:italic; margin:0 0 2.5rem;">Click any bubble to hear it read aloud &mdash; audio coming soon</p>
 
-    </div>
-    <p style="margin-top:2rem; font-size:0.85rem; font-weight:700; color:#B22222; letter-spacing:0.1em; text-transform:uppercase;">✨ Thank you for sharing your stories and inspiring others! ✨</p>
+    <!-- Large heart container -->
+    <div class="heart-container">
+      <div class="heart-inner">
+
+        <!-- Row 1 (narrow top) -->
+        <div class="heart-row">
+          <div class="vfh-bubble red"><span>Save my money.</span></div>
+          <div class="vfh-bubble white-red"><span>It allowed me to save up.</span></div>
+          <div class="vfh-bubble gold"><span>It helped me get better at saving my money.</span></div>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="heart-row">
+          <div class="vfh-bubble gold"><span>It helped me provide for myself independently.</span></div>
+          <div class="vfh-bubble red"><span>I was able to pay for my end-of-year trip and school supplies.</span></div>
+          <div class="vfh-bubble white-gold"><span>It helped me put more money toward college.</span></div>
+          <div class="vfh-bubble red"><span>I was able to pay for many senior activities on my own.</span></div>
+        </div>
+
+        <!-- Row 3 -->
+        <div class="heart-row">
+          <div class="vfh-bubble white-red"><span>I was able to get food for me and my family.</span></div>
+          <div class="vfh-bubble gold"><span>I&rsquo;ve been able to budget better.</span></div>
+          <div class="vfh-bubble red"><span>I am saving for college.</span></div>
+          <div class="vfh-bubble white-gold"><span>Help with household bills.</span></div>
+          <div class="vfh-bubble gold"><span>The extra earnings helped me pay for personal expenses and learn how to manage my finances.</span></div>
+        </div>
+
+        <!-- Row 4 (widest) -->
+        <div class="heart-row">
+          <div class="vfh-bubble red"><span>The money I earned helped me push my snack business and save.</span></div>
+          <div class="vfh-bubble white-red"><span>It allowed me to give money to my mom.</span></div>
+          <div class="vfh-bubble gold"><span>It allowed me to buy the things I want and need, go out, and gain independence.</span></div>
+          <div class="vfh-bubble red"><span>Pay for my phone bill.</span></div>
+          <div class="vfh-bubble white-gold"><span>It allowed me to provide for my family.</span></div>
+        </div>
+
+        <!-- Center label -->
+        <div class="heart-center-label">
+          <div style="font-size:2rem; font-weight:900; color:#1a1a2e; font-family:inherit; line-height:1;">VOICES</div>
+          <div style="font-size:1.4rem; font-family:Georgia,serif; font-style:italic; color:#B22222; line-height:1.1;">from the</div>
+          <div style="font-size:2.2rem; font-weight:900; color:#1a1a2e; font-family:Georgia,serif; font-style:italic; line-height:1;">Heart</div>
+          <div style="font-size:0.65rem; font-weight:800; color:#B22222; letter-spacing:0.15em; text-transform:uppercase; margin-top:0.3rem;">of Learn &amp; Earn</div>
+        </div>
+
+        <!-- Row 5 -->
+        <div class="heart-row">
+          <div class="vfh-bubble gold"><span>It allowed me to treat my mom.</span></div>
+          <div class="vfh-bubble red"><span>The money allowed me to save up for important things.</span></div>
+          <div class="vfh-bubble white-red"><span>It allowed me to work on my money management early.</span></div>
+          <div class="vfh-bubble gold"><span>The earnings allowed me to invest.</span></div>
+          <div class="vfh-bubble red"><span>It allowed me to have a little bit more independence.</span></div>
+        </div>
+
+        <!-- Row 6 -->
+        <div class="heart-row">
+          <div class="vfh-bubble white-gold"><span>It helped me plan a more exciting summer.</span></div>
+          <div class="vfh-bubble red"><span>&ldquo;Thank you for this opportunity.&rdquo;</span></div>
+          <div class="vfh-bubble gold"><span>&ldquo;Thank you for everything.&rdquo;</span></div>
+          <div class="vfh-bubble white-red"><span>&ldquo;Thank you for the learning I&rsquo;ve done in this class!&rdquo;</span></div>
+        </div>
+
+        <!-- Row 7 -->
+        <div class="heart-row">
+          <div class="vfh-bubble gold"><span>&ldquo;I would like to say thank you for giving me the opportunity.&rdquo;</span></div>
+          <div class="vfh-bubble red"><span>&ldquo;Thank you to the entire community. I am very grateful.&rdquo;</span></div>
+          <div class="vfh-bubble white-gold"><span>&ldquo;Thank you very much.&rdquo;</span></div>
+        </div>
+
+        <!-- Row 8 (narrow bottom) -->
+        <div class="heart-row">
+          <div class="vfh-bubble red"><span>&ldquo;Ms. Tatum was great and super supportive. I would love to share this great experience with other students.&rdquo;</span></div>
+          <div class="vfh-bubble gold"><span>&ldquo;Thank you and I want to participate next year.&rdquo;</span></div>
+        </div>
+
+        <!-- Row 9 (tip) -->
+        <div class="heart-row">
+          <div class="vfh-bubble white-red"><span>&ldquo;Do other schools in DC have this program?&rdquo;</span></div>
+          <div class="vfh-bubble gold"><span>&ldquo;Thank you for teaching me how to be a sports manager and to present my business.&rdquo;</span></div>
+        </div>
+
+      </div><!-- /.heart-inner -->
+    </div><!-- /.heart-container -->
+
+    <p style="margin-top:2.5rem; font-size:0.82rem; font-weight:700; color:#B22222; letter-spacing:0.12em; text-transform:uppercase;">✨ Thank you for sharing your stories and inspiring others! ✨</p>
   </div>
 </section>
 
@@ -2756,29 +2864,6 @@
 </section>
 
 
-
-<!-- STUDENT VOICES BALLOON SECTION - INTERACTIVE -->
-<section style="background:#0a0a1a; padding:3rem 1.5rem;">
-  <div style="max-width:960px; margin:0 auto; text-align:center;">
-    <p style="font-size:0.85rem; font-weight:800; letter-spacing:0.18em; color:#F5A623; text-transform:uppercase; margin:0 0 0.5rem;">Real Feedback, Real Time</p>
-    <h2 style="font-size:2rem; font-weight:900; color:#fff; margin:0 0 0.3rem;">Student Voices <span style="color:#B22222;">Lifting Us Up!</span> &#9825;</h2>
-    <p style="font-size:0.82rem; color:#aaa; font-style:italic; margin:0 0 2rem;">Click any balloon to hear it read aloud &mdash; audio coming soon</p>
-    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:1.2rem; align-items:flex-start;">
-
-      <div class="hrt-balloon" style="--bc:#B22222;"><span>&ldquo;Thank you for this opportunity.&rdquo;</span></div>
-      <div class="hrt-balloon" style="--bc:#F5A623;"><span>&ldquo;Thank you for everything.&rdquo;</span></div>
-      <div class="hrt-balloon" style="--bc:#fff; --tc:#1a1a2e; --brd:#B22222;"><span>&ldquo;Ms. Tatum was great and super supportive. I would love to share this great experience with other students as well.&rdquo;</span></div>
-      <div class="hrt-balloon" style="--bc:#B22222;"><span>&ldquo;Do other schools in DC have this program?&rdquo;</span></div>
-      <div class="hrt-balloon" style="--bc:#F5A623;"><span>&ldquo;Thank you for teaching me how to be a sports manager and to present my business.&rdquo;</span></div>
-      <div class="hrt-balloon" style="--bc:#fff; --tc:#B22222; --brd:#F5A623;"><span>&ldquo;Thank you for the learning I&rsquo;ve done in this class!&rdquo;</span></div>
-      <div class="hrt-balloon" style="--bc:#B22222;"><span>&ldquo;I would like to say thank you for giving me the opportunity.&rdquo;</span></div>
-      <div class="hrt-balloon" style="--bc:#F5A623;"><span>&ldquo;Thank you to the entire community. I am very grateful.&rdquo;</span></div>
-      <div class="hrt-balloon" style="--bc:#fff; --tc:#1a1a2e; --brd:#B22222;"><span>&ldquo;Thank you very much.&rdquo;</span></div>
-      <div class="hrt-balloon" style="--bc:#B22222;"><span>&ldquo;Thank you and I want to participate next year.&rdquo;</span></div>
-
-    </div>
-  </div>
-</section>
 
 <!-- IMPROVEMENTS -->
 <section id="improvements">
