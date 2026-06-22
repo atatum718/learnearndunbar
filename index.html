@@ -3591,7 +3591,11 @@
     container.querySelectorAll('.accordion-item, .spk-accordion').forEach(i => {
       if (i !== item) i.classList.remove('open');
     });
-    if (!isOpen) item.classList.add('open');
+    if (isOpen) {
+      item.classList.remove('open');
+    } else {
+      item.classList.add('open');
+    }
     // Rotate arrow if present
     const arrow = header.querySelector('.spk-acc-arrow');
     if (arrow) arrow.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
