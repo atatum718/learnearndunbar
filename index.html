@@ -800,6 +800,14 @@
       border-radius: 12px; padding: 1.5rem;
       transition: border-color 0.3s, transform 0.3s;
     }
+    .people-card-info { display: flex; flex-direction: column; }
+    .people-card-info .people-card-desc { flex: 1; }
+    .people-card-photo {
+      height: 240px;
+    }
+    .people-card-photo img {
+      width: 100%; height: 100%; object-fit: cover; object-position: top; display: block;
+    }
     .people-card:hover { border-color: var(--red); transform: translateY(-3px); }
     .people-card-avatar {
       width: 52px; height: 52px; border-radius: 50%;
@@ -2061,7 +2069,7 @@
             <h4>Gabi Smith</h4>
             <span class="people-card-role">Program Director</span>
             <p class="people-card-desc">As Program Director, Gabi oversaw the Learn &amp; Earn Program at Dunbar High School, providing strategic leadership across all career pathways. She cultivated partnerships with industry professionals, coordinated program operations, and created opportunities for students to engage in meaningful, real-world learning experiences. Through her leadership, students gained access to mentorship, workforce exposure, earned a competitive wage, and career-connected opportunities that help prepare them for success beyond high school.</p>
-            <div style="margin-top:1rem; overflow:hidden; border-radius:8px; cursor:pointer; max-height:320px;" onclick="openLightbox('images/gabi_smith.jpg','Gabi Smith — Program Director, Learn &amp; Earn Program')"><img src="images/gabi_smith.jpg" alt="Gabi Smith with student" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;" /></div>
+            <div class="people-card-photo" style="margin-top:1rem; overflow:hidden; border-radius:8px; cursor:pointer;" onclick="openLightbox('images/gabi_smith.jpg','Gabi Smith — Program Director, Learn &amp; Earn Program')"><img src="images/gabi_smith.jpg" alt="Gabi Smith with student" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;" /></div>
             <p style="margin-top:0.5rem; font-size:0.82rem; color:var(--gray); font-style:italic; text-align:left;">Program Director Gabi Smith with a student — a moment of connection and encouragement</p>
           </div>
         </div>
@@ -2072,7 +2080,7 @@
             <h4>Alecia Tatum</h4>
             <span class="people-card-role">AI Track Lead</span>
             <p class="people-card-desc" style="min-height:9rem;">Led the AI Track and served as a cross-track specialist working with both the Engineering and Sports Management tracks, supporting students in grades 10–12. Alecia also facilitated the <strong style="color:var(--white)">Earn 2 Learn Podcast</strong> — the Sports Management capstone project — and helped Engineering students transform hand-drawn sketches into 3D AI-generated visual concepts.</p>
-            <div style="margin-top:1rem; overflow:hidden; border-radius:8px; cursor:pointer; max-height:320px;" onclick="openLightbox('images/alecia_teaching.jpg','Alecia Tatum working with students')"><img src="images/alecia_teaching.jpg" alt="Alecia Tatum working with students" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;" /></div>
+            <div class="people-card-photo" style="margin-top:1rem; overflow:hidden; border-radius:8px; cursor:pointer;" onclick="openLightbox('images/alecia_teaching.jpg','Alecia Tatum working with students')"><img src="images/alecia_teaching.jpg" alt="Alecia Tatum working with students" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;" /></div>
           </div>
         </div>
 
@@ -2082,7 +2090,7 @@
             <h4>Trezell Ragas</h4>
             <span class="people-card-role">Entrepreneurship Track Lead</span>
             <p class="people-card-desc" style="min-height:12rem;">Trezell guided students in the Entrepreneurship Track by helping them turn ideas into action. She provided hands-on support in business planning, leadership, and innovation while connecting students with mentors and opportunities in the business community. Trezell also coordinated Career Shop Dunbar activities with the Office of Local and Small Business Development to ensure District support for our program.</p>
-            <div style="margin-top:1rem; overflow:hidden; border-radius:8px; cursor:pointer; max-height:320px;" onclick="openLightbox('images/trezell_ragas.jpg','Trezell Ragas — Entrepreneurship Track Lead')"><img src="images/trezell_ragas.jpg" alt="Trezell Ragas" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;" /></div>
+            <div class="people-card-photo" style="margin-top:1rem; overflow:hidden; border-radius:8px; cursor:pointer;" onclick="openLightbox('images/trezell_ragas.jpg','Trezell Ragas — Entrepreneurship Track Lead')"><img src="images/trezell_ragas.jpg" alt="Trezell Ragas" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;" /></div>
           </div>
         </div>
 
@@ -2092,7 +2100,7 @@
             <h4>Malik Worthy</h4>
             <span class="people-card-role">Sports Management Career Pathway Instructor</span>
             <p class="people-card-desc">Malik taught the Sports Management pathway, helping students develop leadership, teamwork, and industry knowledge through hands-on learning experiences. He coordinated with sports professionals and industry mentors to connect students with real-world perspectives and career opportunities. Malik also supported students as they prepared for Presentation Day, guiding them in refining projects, strengthening presentations, and effectively showcasing their work. His engaging instruction helped bring classroom learning to life while building confidence and professional skills.</p>
-            <div style="margin-top:1rem; overflow:hidden; border-radius:8px; cursor:pointer; max-height:320px;" onclick="openLightbox('images/malik_worthy.jpg','Malik Worthy — Sports Management Career Pathway Instructor')"><img src="images/malik_worthy.jpg" alt="Malik Worthy" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;" /></div>
+            <div class="people-card-photo" style="margin-top:1rem; overflow:hidden; border-radius:8px; cursor:pointer;" onclick="openLightbox('images/malik_worthy.jpg','Malik Worthy — Sports Management Career Pathway Instructor')"><img src="images/malik_worthy.jpg" alt="Malik Worthy" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;" /></div>
           </div>
         </div>
 
@@ -2102,7 +2110,7 @@
             <h4>Hope Cousin</h4>
             <span class="people-card-role">9th Grade Engineering Facilitator</span>
             <p class="people-card-desc">Hope Cousin supported engineering students across multiple grade levels by helping guide project development from concept to presentation. She coordinated with industry mentors to provide students with real-world feedback and career insights, while assisting teams in transforming their ideas into professional model boards for Presentation Day. Through hands-on support, project coaching, and industry engagement, she helped students strengthen their design thinking, communication, and presentation skills.</p>
-            <div style="margin-top:1rem; overflow:hidden; border-radius:8px; cursor:pointer; max-height:320px;" onclick="openLightbox('images/hope_cousin_judging.jpg','Hope Cousin watching Engineering presentations')"><img src="images/hope_cousin_judging.jpg" alt="Hope Cousin at Engineering presentations" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;" /></div>
+            <div class="people-card-photo" style="margin-top:1rem; overflow:hidden; border-radius:8px; cursor:pointer;" onclick="openLightbox('images/hope_cousin_judging.jpg','Hope Cousin watching Engineering presentations')"><img src="images/hope_cousin_judging.jpg" alt="Hope Cousin at Engineering presentations" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;" /></div>
           </div>
         </div>
 
@@ -2112,7 +2120,7 @@
             <h4>Ulysses Glen</h4>
             <span class="people-card-role">Financial Operations</span>
             <p class="people-card-desc">Ulysses managed student timekeeping, stipend payments, and the program's debit card system, ensuring participants were compensated accurately and on time. He also provided financial literacy instruction focused on budgeting, saving, banking, and responsible money management. Through his support, students gained valuable experience in workplace accountability, understanding earnings, and developing lifelong financial skills.</p>
-            <div style="margin-top:1rem; overflow:hidden; border-radius:8px; cursor:pointer; max-height:320px;" onclick="openLightbox('images/ulysses_stipend_day.jpg','Ulysses Glen distributing stipends to students — Presentation Day')"><img src="images/ulysses_stipend_day.jpg" alt="Ulysses Glen on stipend day" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;" /></div>
+            <div class="people-card-photo" style="margin-top:1rem; overflow:hidden; border-radius:8px; cursor:pointer;" onclick="openLightbox('images/ulysses_stipend_day.jpg','Ulysses Glen distributing stipends to students — Presentation Day')"><img src="images/ulysses_stipend_day.jpg" alt="Ulysses Glen on stipend day" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;" /></div>
           </div>
         </div>
 
@@ -2129,7 +2137,7 @@
             <h4>Mr. Jacobs</h4>
             <span class="people-card-role">Head, Sports Management Academy</span>
             <p class="people-card-desc">Mr. Jacobs leads the Sports Management Academy at Paul Laurence Dunbar High School. A former athlete himself, he brings firsthand knowledge of sports culture, competition, and the discipline required to succeed both on and off the field. His background gives him a unique ability to connect with students and translate athletic experience into professional career readiness.</p>
-            <div style="margin-top:1rem; overflow:hidden; border-radius:8px; cursor:pointer; max-height:320px;" onclick="openLightbox('images/mr_jacobs.jpg','Mr. Jacobs — Head, Sports Management Academy')"><img src="images/mr_jacobs.jpg" alt="Mr. Jacobs" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;" /></div>
+            <div class="people-card-photo" style="margin-top:1rem; overflow:hidden; border-radius:8px; cursor:pointer;" onclick="openLightbox('images/mr_jacobs.jpg','Mr. Jacobs — Head, Sports Management Academy')"><img src="images/mr_jacobs.jpg" alt="Mr. Jacobs" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;" /></div>
           </div>
         </div>
 
@@ -2139,7 +2147,7 @@
             <h4>Mr. Robinson</h4>
             <span class="people-card-role">9th Grade Teacher &mdash; African American History &amp; Paul Laurence Dunbar History</span>
             <p class="people-card-desc">Mr. Robinson teaches African American History and the History of Paul Laurence Dunbar High School, grounding students in the legacy of the institution they attend. His work connects historical context to present-day identity and purpose, helping students understand where they come from as they chart where they are going.</p>
-            <div style="margin-top:1rem; overflow:hidden; border-radius:8px; cursor:pointer; max-height:320px;" onclick="openLightbox('images/mr_robinson.jpg','Mr. Robinson — 9th Grade Teacher, African American History')"><img src="images/mr_robinson.jpg" alt="Mr. Robinson" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;" /></div>
+            <div class="people-card-photo" style="margin-top:1rem; overflow:hidden; border-radius:8px; cursor:pointer;" onclick="openLightbox('images/mr_robinson.jpg','Mr. Robinson — 9th Grade Teacher, African American History')"><img src="images/mr_robinson.jpg" alt="Mr. Robinson" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;" /></div>
           </div>
         </div>
 
@@ -2149,7 +2157,7 @@
             <h4>Ms. Beard</h4>
             <span class="people-card-role">Head, Engineering Academy &mdash; Senior Engineering Instructor</span>
             <p class="people-card-desc">Ms. Beard heads the Engineering Academy at Dunbar High School and served as the Senior Engineering Instructor for the Learn &amp; Earn Program. She guided senior-level students through the full engineering design process, from community problem identification to prototype development and final presentations.</p>
-            <div style="margin-top:1rem; overflow:hidden; border-radius:8px; cursor:pointer; max-height:320px;" onclick="openLightbox('images/ms_beard_teaching.jpg','Ms. Beard — Head of the Engineering Academy, Paul Laurence Dunbar High School')"><img src="images/ms_beard_teaching.jpg" alt="Ms. Beard teaching" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;" /></div>
+            <div class="people-card-photo" style="margin-top:1rem; overflow:hidden; border-radius:8px; cursor:pointer;" onclick="openLightbox('images/ms_beard_teaching.jpg','Ms. Beard — Head of the Engineering Academy, Paul Laurence Dunbar High School')"><img src="images/ms_beard_teaching.jpg" alt="Ms. Beard teaching" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;" /></div>
           </div>
         </div>
 
@@ -2159,7 +2167,7 @@
             <h4>Ms. Lawrence</h4>
             <span class="people-card-role">Special Needs Support &mdash; Entrepreneurship Track</span>
             <p class="people-card-desc">Ms. Lawrence provides dedicated support for students with special needs within the Entrepreneurship Track, ensuring every student has equitable access to the program's learning experiences. Her presence reflects the program's commitment to inclusive education and meeting students where they are.</p>
-            <div style="margin-top:1rem; overflow:hidden; border-radius:8px; cursor:pointer; max-height:320px;" onclick="openLightbox('images/ms_lawrence_teaching.jpg','Ms. Lawrence — Special Needs Support, Entrepreneurship Track')"><img src="images/ms_lawrence_teaching.jpg" alt="Ms. Lawrence teaching" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;" /></div>
+            <div class="people-card-photo" style="margin-top:1rem; overflow:hidden; border-radius:8px; cursor:pointer;" onclick="openLightbox('images/ms_lawrence_teaching.jpg','Ms. Lawrence — Special Needs Support, Entrepreneurship Track')"><img src="images/ms_lawrence_teaching.jpg" alt="Ms. Lawrence teaching" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;" /></div>
           </div>
         </div>
 
