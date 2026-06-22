@@ -3155,61 +3155,87 @@
 
 
 <!-- STUDENT VOICES — PROGRAM APPRECIATION -->
-<section style="background:#fdf4f4; padding:3.5rem 1rem 4rem;">
-  <div style="max-width:1100px; margin:0 auto; text-align:center;">
+<section style="background:#fdf4f4; padding:3.5rem 0 4rem; overflow:hidden;">
+  <style>
+    .sq-header { max-width:1100px; margin:0 auto; text-align:center; padding:0 1rem 2.5rem; }
+    .sq-track { display:flex; gap:0.75rem; width:max-content; }
+    .sq-track .vfh-bubble { flex:0 0 auto; max-width:280px; min-width:160px; cursor:default; }
+    .sq-track .vfh-bubble:hover { transform:translateY(-6px) scale(1.05); box-shadow:0 14px 28px rgba(0,0,0,0.18); }
+    .sq-row { overflow:hidden; width:100%; margin-bottom:0.75rem; position:relative; }
+    /* Fade edges */
+    .sq-row::before, .sq-row::after {
+      content:''; position:absolute; top:0; bottom:0; width:80px; z-index:2; pointer-events:none;
+    }
+    .sq-row::before { left:0; background:linear-gradient(to right, #fdf4f4, transparent); }
+    .sq-row::after  { right:0; background:linear-gradient(to left, #fdf4f4, transparent); }
+    @keyframes sq-left  { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+    @keyframes sq-right { from { transform:translateX(-50%); } to { transform:translateX(0); } }
+    .sq-row.dir-left  .sq-track { animation:sq-left  28s linear infinite; }
+    .sq-row.dir-right .sq-track { animation:sq-right 28s linear infinite; }
+    .sq-row:hover .sq-track { animation-play-state:paused; }
+  </style>
+  <div class="sq-header">
     <p style="font-size:0.8rem; font-weight:800; letter-spacing:0.2em; color:#B22222; text-transform:uppercase; margin:0 0 0.4rem;">In Their Own Words</p>
     <h2 style="font-size:2rem; font-weight:900; color:#1a1a2e; margin:0 0 0.4rem; font-family:inherit;">What Students Said About the Program</h2>
-    <p style="font-size:1rem; color:#555; margin:0 0 2.5rem;">Reflections, gratitude, and growth — straight from the students.</p>
-    <div class="vfh-heart-wrap" style="gap:0.7rem;">
-      <!-- Row 1 -->
-      <div class="vfh-row" style="--row-w:520px;">
-        <div class="vfh-bubble red"><span>&ldquo;Thank you for teaching me how to be a sports manager and to present my business.&rdquo;</span></div>
-        <div class="vfh-bubble gold"><span>&ldquo;Ms. Tatum was great and super supportive. I would love to share this with other students.&rdquo;</span></div>
-      </div>
-      <!-- Row 2 -->
-      <div class="vfh-row" style="--row-w:820px;">
-        <div class="vfh-bubble white-red"><span>&ldquo;Do other schools in DC have this program?&rdquo;</span></div>
-        <div class="vfh-bubble red"><span>&ldquo;Thank you and I want to participate next year.&rdquo;</span></div>
-        <div class="vfh-bubble gold"><span>&ldquo;I would like to say thank you for giving me the opportunity.&rdquo;</span></div>
-      </div>
-      <!-- Row 3 -->
-      <div class="vfh-row" style="--row-w:1060px;">
-        <div class="vfh-bubble white-gold"><span>&ldquo;Thank you to the entire community. I am very grateful.&rdquo;</span></div>
-        <div class="vfh-bubble red"><span>&ldquo;Thank you for the learning I&rsquo;ve done in this class!&rdquo;</span></div>
-        <div class="vfh-bubble gold"><span>It allowed me to keep pushing and improve my work ethic.</span></div>
-        <div class="vfh-bubble white-red"><span>It helped me to stay engaged and work hard with my teammates.</span></div>
-      </div>
-      <!-- Row 4 -->
-      <div class="vfh-row" style="--row-w:1100px;">
-        <div class="vfh-bubble gold"><span>Learn teamwork and discipline.</span></div>
-        <div class="vfh-bubble red"><span>It helped me work harder and think more.</span></div>
-        <div class="vfh-bubble white-gold"><span>It allowed me to focus on my work.</span></div>
-        <div class="vfh-bubble white-red"><span>Help me become more social.</span></div>
-      </div>
-      <!-- Row 5 -->
-      <div class="vfh-row" style="--row-w:1100px;">
-        <div class="vfh-bubble red"><span>It opened my eyes to many other things.</span></div>
-        <div class="vfh-bubble gold"><span>It allowed me to understand that I should be strict about what I spend my money on and save up.</span></div>
-        <div class="vfh-bubble white-red"><span>The extra earnings kept me motivated &mdash; sometimes I didn&rsquo;t feel like working, but I pushed through.</span></div>
-        <div class="vfh-bubble white-gold"><span>Helped me save money and learn how a job works.</span></div>
-      </div>
-      <!-- Row 6 -->
-      <div class="vfh-row" style="--row-w:820px;">
-        <div class="vfh-bubble red"><span>The earnings allowed me to realize how important internships are.</span></div>
-        <div class="vfh-bubble gold"><span>&ldquo;Thank you very much.&rdquo;</span></div>
-        <div class="vfh-bubble white-red"><span>&ldquo;Thank you for everything.&rdquo;</span></div>
-      </div>
-      <!-- Row 7 -->
-      <div class="vfh-row" style="--row-w:540px;">
-        <div class="vfh-bubble white-gold"><span>It helped me provide for myself independently.</span></div>
-        <div class="vfh-bubble red"><span>It helped me put more money toward college.</span></div>
-      </div>
-      <!-- Row 8 tip -->
-      <div class="vfh-row" style="--row-w:280px;">
-        <div class="vfh-bubble gold"><span>&ldquo;Thank you for this opportunity.&rdquo;</span></div>
-      </div>
+    <p style="font-size:1rem; color:#555; margin:0;">Reflections, gratitude, and growth &mdash; straight from the students.</p>
+  </div>
+
+  <!-- Row A → left (quotes 1-10 doubled for seamless loop) -->
+  <div class="sq-row dir-left">
+    <div class="sq-track">
+      <div class="vfh-bubble red"><span>&ldquo;Thank you for teaching me how to be a sports manager and to present my business.&rdquo;</span></div>
+      <div class="vfh-bubble gold"><span>&ldquo;Ms. Tatum was great and super supportive. I would love to share this with other students.&rdquo;</span></div>
+      <div class="vfh-bubble white-red"><span>&ldquo;Do other schools in DC have this program?&rdquo;</span></div>
+      <div class="vfh-bubble red"><span>&ldquo;Thank you and I want to participate next year.&rdquo;</span></div>
+      <div class="vfh-bubble gold"><span>&ldquo;I would like to say thank you for giving me the opportunity.&rdquo;</span></div>
+      <div class="vfh-bubble white-gold"><span>&ldquo;Thank you to the entire community. I am very grateful.&rdquo;</span></div>
+      <div class="vfh-bubble red"><span>&ldquo;Thank you for the learning I&rsquo;ve done in this class!&rdquo;</span></div>
+      <div class="vfh-bubble gold"><span>It allowed me to keep pushing and improve my work ethic.</span></div>
+      <div class="vfh-bubble white-red"><span>It helped me to stay engaged and work hard with my teammates.</span></div>
+      <div class="vfh-bubble white-gold"><span>Learn teamwork and discipline.</span></div>
+      <!-- Duplicate for seamless loop -->
+      <div class="vfh-bubble red"><span>&ldquo;Thank you for teaching me how to be a sports manager and to present my business.&rdquo;</span></div>
+      <div class="vfh-bubble gold"><span>&ldquo;Ms. Tatum was great and super supportive. I would love to share this with other students.&rdquo;</span></div>
+      <div class="vfh-bubble white-red"><span>&ldquo;Do other schools in DC have this program?&rdquo;</span></div>
+      <div class="vfh-bubble red"><span>&ldquo;Thank you and I want to participate next year.&rdquo;</span></div>
+      <div class="vfh-bubble gold"><span>&ldquo;I would like to say thank you for giving me the opportunity.&rdquo;</span></div>
+      <div class="vfh-bubble white-gold"><span>&ldquo;Thank you to the entire community. I am very grateful.&rdquo;</span></div>
+      <div class="vfh-bubble red"><span>&ldquo;Thank you for the learning I&rsquo;ve done in this class!&rdquo;</span></div>
+      <div class="vfh-bubble gold"><span>It allowed me to keep pushing and improve my work ethic.</span></div>
+      <div class="vfh-bubble white-red"><span>It helped me to stay engaged and work hard with my teammates.</span></div>
+      <div class="vfh-bubble white-gold"><span>Learn teamwork and discipline.</span></div>
     </div>
-    <p style="margin-top:2.5rem; font-size:0.82rem; font-weight:700; color:#B22222; letter-spacing:0.1em; text-transform:uppercase;">All surveys available upon request</p>
+  </div>
+
+  <!-- Row B → right (quotes 11-20 doubled) -->
+  <div class="sq-row dir-right">
+    <div class="sq-track">
+      <div class="vfh-bubble red"><span>It helped me work harder and think more.</span></div>
+      <div class="vfh-bubble white-gold"><span>It allowed me to focus on my work.</span></div>
+      <div class="vfh-bubble white-red"><span>Help me become more social.</span></div>
+      <div class="vfh-bubble gold"><span>It opened my eyes to many other things.</span></div>
+      <div class="vfh-bubble red"><span>It allowed me to understand that I should be strict about what I spend my money on and save up.</span></div>
+      <div class="vfh-bubble white-gold"><span>The extra earnings kept me motivated &mdash; sometimes I didn&rsquo;t feel like working, but I pushed through.</span></div>
+      <div class="vfh-bubble gold"><span>Helped me save money and learn how a job works.</span></div>
+      <div class="vfh-bubble white-red"><span>The earnings allowed me to realize how important internships are.</span></div>
+      <div class="vfh-bubble red"><span>&ldquo;Thank you very much.&rdquo;</span></div>
+      <div class="vfh-bubble gold"><span>&ldquo;Thank you for everything.&rdquo;</span></div>
+      <!-- Duplicate for seamless loop -->
+      <div class="vfh-bubble red"><span>It helped me work harder and think more.</span></div>
+      <div class="vfh-bubble white-gold"><span>It allowed me to focus on my work.</span></div>
+      <div class="vfh-bubble white-red"><span>Help me become more social.</span></div>
+      <div class="vfh-bubble gold"><span>It opened my eyes to many other things.</span></div>
+      <div class="vfh-bubble red"><span>It allowed me to understand that I should be strict about what I spend my money on and save up.</span></div>
+      <div class="vfh-bubble white-gold"><span>The extra earnings kept me motivated &mdash; sometimes I didn&rsquo;t feel like working, but I pushed through.</span></div>
+      <div class="vfh-bubble gold"><span>Helped me save money and learn how a job works.</span></div>
+      <div class="vfh-bubble white-red"><span>The earnings allowed me to realize how important internships are.</span></div>
+      <div class="vfh-bubble red"><span>&ldquo;Thank you very much.&rdquo;</span></div>
+      <div class="vfh-bubble gold"><span>&ldquo;Thank you for everything.&rdquo;</span></div>
+    </div>
+  </div>
+
+  <div style="text-align:center; margin-top:2rem; padding:0 1rem;">
+    <p style="font-size:0.82rem; font-weight:700; color:#B22222; letter-spacing:0.1em; text-transform:uppercase;">All surveys available upon request</p>
   </div>
 </section>
 <!-- IMPROVEMENTS -->
