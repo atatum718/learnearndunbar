@@ -806,10 +806,12 @@
     .people-card-info { display: flex; flex-direction: column; flex: 1; min-height: 0; }
     .people-card-info .people-card-desc { flex: 1; }
     .people-card-photo {
-      /* no fixed height — let image show at natural aspect ratio */
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      border-radius: 8px;
     }
     .people-card-photo img {
-      width: 100%; height: auto; display: block; border-radius: 8px;
+      width: 100%; height: 100%; object-fit: cover; object-position: top; display: block;
     }
     .people-card:hover { border-color: var(--red); transform: translateY(-3px); }
     .people-card-avatar {
@@ -2073,7 +2075,7 @@
             <span class="people-card-role">Program Director</span>
             <p class="people-card-desc">As Program Director, Gabi oversaw the Learn &amp; Earn Program at Dunbar High School, providing strategic leadership across all career pathways. She cultivated partnerships with industry professionals, coordinated program operations, and created opportunities for students to engage in meaningful, real-world learning experiences. Through her leadership, students gained access to mentorship, workforce exposure, earned a competitive wage, and career-connected opportunities that help prepare them for success beyond high school.</p>
             <div class="people-card-photo" style="margin-top:1rem; overflow:hidden; border-radius:8px; cursor:pointer;" onclick="openLightbox('images/gabi_smith.jpg','Gabi Smith — Program Director, Learn &amp; Earn Program')"><img src="images/gabi_smith.jpg" alt="Gabi Smith with student" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;" /></div>
-            <p style="margin-top:0.5rem; font-size:0.82rem; color:var(--gray); font-style:italic; text-align:left;">Program Director Gabi Smith with a student — a moment of connection and encouragement</p>
+
           </div>
         </div>
 
@@ -2252,7 +2254,7 @@
             <div style="height:260px; overflow:hidden; border-radius:8px;">
               <img src="images/participant_winner.jpg" alt="Samari Marshall holding Presentation Winner award" loading="lazy" style="width:100%; height:100%; object-fit:cover; object-position:top; display:block;" />
             </div>
-            <p style="font-size:0.78rem; font-style:italic; color:var(--gray); text-align:center; margin-top:0.4rem; padding:0 0.5rem;">Samari M. receives award for unexpectedly delivering his presentation alone. Now that's real leadership!</p>
+
           </div>
 
         </div>
@@ -2270,7 +2272,7 @@
             <div style="height:420px; overflow:hidden; border-radius:8px;">
               <img src="images/participant_photo2.jpg" alt="Mini Olympics Team Members celebrating with Alecia and Gabi" loading="lazy" style="height:100%; width:auto; object-fit:cover; display:block; border-radius:8px;" />
             </div>
-            <p style="font-size:0.78rem; font-style:italic; color:var(--gray); text-align:center; margin-top:0.4rem; padding:0 0.5rem;">Mini Olympics Team Members celebrating their win on Presentation Day with Alecia and Gabi</p>
+
           </div>
 
         </div>
@@ -2311,22 +2313,22 @@
 
       <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:1.5rem 1.5rem 1.5rem 1.25rem; display:flex; gap:1rem; align-items:flex-start; transition:border-color 0.25s,transform 0.25s,background 0.25s;" onmouseover="this.style.borderColor='#B22222';this.style.background='rgba(178,34,34,0.08)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)';this.style.background='rgba(255,255,255,0.04)';this.style.transform='none'">
         <div style="font-size:2rem; line-height:1; flex-shrink:0; margin-top:0.1rem;">&#127908;</div>
-        <div><div style="font-size:1rem; font-weight:800; color:#fff; margin-bottom:0.3rem;">Public Speaking</div><div style="font-size:0.85rem; color:#aaa; line-height:1.5;">Delivered college-level presentations to panels of industry professionals &mdash; not just classmates.</div></div>
+        <div><div style="font-size:1rem; font-weight:800; color:#fff; margin-bottom:0.3rem;">Public Speaking</div><div style="font-size:0.85rem; color:#aaa; line-height:1.5;">Delivered professional-quality presentations to panels of industry experts.</div></div>
       </div>
 
       <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:1.5rem 1.5rem 1.5rem 1.25rem; display:flex; gap:1rem; align-items:flex-start; transition:border-color 0.25s,transform 0.25s,background 0.25s;" onmouseover="this.style.borderColor='#B22222';this.style.background='rgba(178,34,34,0.08)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)';this.style.background='rgba(255,255,255,0.04)';this.style.transform='none'">
         <div style="font-size:2rem; line-height:1; flex-shrink:0; margin-top:0.1rem;">&#128084;</div>
-        <div><div style="font-size:1rem; font-weight:800; color:#fff; margin-bottom:0.3rem;">Professional Presence</div><div style="font-size:0.85rem; color:#aaa; line-height:1.5;">Dressed for success and carried themselves with confidence in real workplace settings.</div></div>
+        <div><div style="font-size:1rem; font-weight:800; color:#fff; margin-bottom:0.3rem;">Professional Presence</div><div style="font-size:0.85rem; color:#aaa; line-height:1.5;">Embraced a professional mindset by dressing for success on Capstone Project Day.</div></div>
       </div>
 
       <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:1.5rem 1.5rem 1.5rem 1.25rem; display:flex; gap:1rem; align-items:flex-start; transition:border-color 0.25s,transform 0.25s,background 0.25s;" onmouseover="this.style.borderColor='#B22222';this.style.background='rgba(178,34,34,0.08)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)';this.style.background='rgba(255,255,255,0.04)';this.style.transform='none'">
         <div style="font-size:2rem; line-height:1; flex-shrink:0; margin-top:0.1rem;">&#128269;</div>
-        <div><div style="font-size:1rem; font-weight:800; color:#fff; margin-bottom:0.3rem;">Research &amp; Analysis</div><div style="font-size:0.85rem; color:#aaa; line-height:1.5;">Conducted market research, analyzed data, and built evidence-based arguments to support their ideas.</div></div>
+        <div><div style="font-size:1rem; font-weight:800; color:#fff; margin-bottom:0.3rem;">Research &amp; Analysis</div><div style="font-size:0.85rem; color:#aaa; line-height:1.5;">Conducted market research, analyzed data, and presented evidence-based rationales for their ideas.</div></div>
       </div>
 
       <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:1.5rem 1.5rem 1.5rem 1.25rem; display:flex; gap:1rem; align-items:flex-start; transition:border-color 0.25s,transform 0.25s,background 0.25s;" onmouseover="this.style.borderColor='#B22222';this.style.background='rgba(178,34,34,0.08)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)';this.style.background='rgba(255,255,255,0.04)';this.style.transform='none'">
         <div style="font-size:2rem; line-height:1; flex-shrink:0; margin-top:0.1rem;">&#129309;</div>
-        <div><div style="font-size:1rem; font-weight:800; color:#fff; margin-bottom:0.3rem;">Team Collaboration</div><div style="font-size:0.85rem; color:#aaa; line-height:1.5;">Navigated group dynamics, delegated tasks, and delivered results under real deadlines.</div></div>
+        <div><div style="font-size:1rem; font-weight:800; color:#fff; margin-bottom:0.3rem;">Team Collaboration</div><div style="font-size:0.85rem; color:#aaa; line-height:1.5;">Developed workplace-ready collaboration by contributing to a team, managing responsibilities, and achieving project milestones together.</div></div>
       </div>
 
       <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:1.5rem 1.5rem 1.5rem 1.25rem; display:flex; gap:1rem; align-items:flex-start; transition:border-color 0.25s,transform 0.25s,background 0.25s;" onmouseover="this.style.borderColor='#B22222';this.style.background='rgba(178,34,34,0.08)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)';this.style.background='rgba(255,255,255,0.04)';this.style.transform='none'">
@@ -2336,7 +2338,7 @@
 
       <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:1.5rem 1.5rem 1.5rem 1.25rem; display:flex; gap:1rem; align-items:flex-start; transition:border-color 0.25s,transform 0.25s,background 0.25s;" onmouseover="this.style.borderColor='#B22222';this.style.background='rgba(178,34,34,0.08)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)';this.style.background='rgba(255,255,255,0.04)';this.style.transform='none'">
         <div style="font-size:2rem; line-height:1; flex-shrink:0; margin-top:0.1rem;">&#128202;</div>
-        <div><div style="font-size:1rem; font-weight:800; color:#fff; margin-bottom:0.3rem;">Presentation Design</div><div style="font-size:0.85rem; color:#aaa; line-height:1.5;">Created polished, professional-grade slide decks from scratch &mdash; the kind used in boardrooms, not classrooms.</div></div>
+        <div><div style="font-size:1rem; font-weight:800; color:#fff; margin-bottom:0.3rem;">Presentation Design</div><div style="font-size:0.85rem; color:#aaa; line-height:1.5;">Created presentation decks that met college-level expectations for research, organization, and visual design.</div></div>
       </div>
 
       <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:1.5rem 1.5rem 1.5rem 1.25rem; display:flex; gap:1rem; align-items:flex-start; transition:border-color 0.25s,transform 0.25s,background 0.25s;" onmouseover="this.style.borderColor='#B22222';this.style.background='rgba(178,34,34,0.08)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)';this.style.background='rgba(255,255,255,0.04)';this.style.transform='none'">
@@ -2346,12 +2348,12 @@
 
       <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:1.5rem 1.5rem 1.5rem 1.25rem; display:flex; gap:1rem; align-items:flex-start; transition:border-color 0.25s,transform 0.25s,background 0.25s;" onmouseover="this.style.borderColor='#B22222';this.style.background='rgba(178,34,34,0.08)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)';this.style.background='rgba(255,255,255,0.04)';this.style.transform='none'">
         <div style="font-size:2rem; line-height:1; flex-shrink:0; margin-top:0.1rem;">&#129504;</div>
-        <div><div style="font-size:1rem; font-weight:800; color:#fff; margin-bottom:0.3rem;">Critical Thinking</div><div style="font-size:0.85rem; color:#aaa; line-height:1.5;">Solved real-world problems with limited resources, high expectations, and no textbook answers.</div></div>
+        <div><div style="font-size:1rem; font-weight:800; color:#fff; margin-bottom:0.3rem;">Critical Thinking</div><div style="font-size:0.85rem; color:#aaa; line-height:1.5;">Turned ideas into actionable solutions by addressing real-world challenges through their capstone projects.</div></div>
       </div>
 
       <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:1.5rem 1.5rem 1.5rem 1.25rem; display:flex; gap:1rem; align-items:flex-start; transition:border-color 0.25s,transform 0.25s,background 0.25s;" onmouseover="this.style.borderColor='#B22222';this.style.background='rgba(178,34,34,0.08)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)';this.style.background='rgba(255,255,255,0.04)';this.style.transform='none'">
         <div style="font-size:2rem; line-height:1; flex-shrink:0; margin-top:0.1rem;">&#128181;</div>
-        <div><div style="font-size:1rem; font-weight:800; color:#fff; margin-bottom:0.3rem;">Financial Literacy</div><div style="font-size:0.85rem; color:#aaa; line-height:1.5;">Earned, managed, and made intentional decisions with their own money &mdash; real stakes, real lessons.</div></div>
+        <div><div style="font-size:1rem; font-weight:800; color:#fff; margin-bottom:0.3rem;">Financial Literacy</div><div style="font-size:0.85rem; color:#aaa; line-height:1.5;">Earned student stipends and developed practical financial management skills by making informed decisions about saving, spending, and budgeting.</div></div>
       </div>
 
       <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:1.5rem 1.5rem 1.5rem 1.25rem; display:flex; gap:1rem; align-items:flex-start; transition:border-color 0.25s,transform 0.25s,background 0.25s;" onmouseover="this.style.borderColor='#B22222';this.style.background='rgba(178,34,34,0.08)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)';this.style.background='rgba(255,255,255,0.04)';this.style.transform='none'">
@@ -2366,7 +2368,7 @@
 
       <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:1.5rem 1.5rem 1.5rem 1.25rem; display:flex; gap:1rem; align-items:flex-start; transition:border-color 0.25s,transform 0.25s,background 0.25s;" onmouseover="this.style.borderColor='#B22222';this.style.background='rgba(178,34,34,0.08)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)';this.style.background='rgba(255,255,255,0.04)';this.style.transform='none'">
         <div style="font-size:2rem; line-height:1; flex-shrink:0; margin-top:0.1rem;">&#9201;&#65039;</div>
-        <div><div style="font-size:1rem; font-weight:800; color:#fff; margin-bottom:0.3rem;">Career Readiness</div><div style="font-size:0.85rem; color:#aaa; line-height:1.5;">Practiced workplace norms &mdash; punctuality, accountability, and professionalism &mdash; every single day.</div></div>
+        <div><div style="font-size:1rem; font-weight:800; color:#fff; margin-bottom:0.3rem;">Career Readiness</div><div style="font-size:0.85rem; color:#aaa; line-height:1.5;">Cultivated workplace-ready habits through consistent professionalism, effective communication, punctuality, and responsibility.</div></div>
       </div>
 
     </div>
