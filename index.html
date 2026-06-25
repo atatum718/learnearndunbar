@@ -806,10 +806,10 @@
     .people-card-info { display: flex; flex-direction: column; flex: 1; min-height: 0; }
     .people-card-info .people-card-desc { flex: 1; }
     .people-card-photo {
-      height: 240px;
+      /* no fixed height — let image show at natural aspect ratio */
     }
     .people-card-photo img {
-      width: 100%; height: 100%; object-fit: cover; object-position: top; display: block;
+      width: 100%; height: auto; display: block; border-radius: 8px;
     }
     .people-card:hover { border-color: var(--red); transform: translateY(-3px); }
     .people-card-avatar {
